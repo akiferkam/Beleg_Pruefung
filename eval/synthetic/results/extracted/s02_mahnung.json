@@ -1,0 +1,17 @@
+{
+  "document_type": "Mahnung",
+  "unreadable_or_incomplete": false,
+  "line_items": [],
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "invoice_number": "RE-5567",
+  "invoice_date": "2026-08-20",
+  "gross_amount": 5414.5,
+  "supplier_name": "Kronkorken Müller KG",
+  "supplier_address": "Augsburg",
+  "supplier_tax_id_type": "unbekannt",
+  "non_invoice_statement": "Dies ist keine Rechnung.",
+  "extraction_notes": "Es handelt sich um eine Zahlungserinnerung zur Rechnung RE-5567, nicht um eine Rechnung selbst. Keine Positionsangaben, keine Steuerangaben, keine Empfängerdaten vorhanden."
+}

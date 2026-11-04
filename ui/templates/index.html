@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Beleg-Prüfung für Quellberg</title>
+<style>
+  :root {
+    --bg: #f2f3f7; --panel: #ffffff; --border: #e4e6ec; --border-soft: #edeef2;
+    --text: #15171c; --muted: #6b7078; --muted-soft: #9499a3;
+    --accent: #3558e0; --accent-dark: #2a46ba; --accent-soft: #eef1fd;
+    --green: #15803d; --green-bg: #e8f7ee; --green-border: #bfe8cf;
+    --red: #b42318; --red-bg: #fdeceb; --red-border: #f5c2bc;
+    --amber: #92400e; --amber-bg: #fef3c7; --amber-border: #f0c36d;
+    --radius: 12px; --radius-sm: 8px;
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 2px 6px rgba(16,24,40,.05);
+    --shadow-hover: 0 4px 10px rgba(16,24,40,.08), 0 2px 4px rgba(16,24,40,.05);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.45; }
+  header { padding: 22px 32px; background: var(--panel); border-bottom: 1px solid var(--border); }
+  header .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
+  header h1 { margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -.01em; }
+  header p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+
+  .layout { display: grid; grid-template-columns: 320px 1fr; gap: 22px; padding: 22px 32px 48px; align-items: start; max-width: 1400px; margin: 0 auto; }
+  .sidebar { position: sticky; top: 22px; display: flex; flex-direction: column; gap: 16px; }
+
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+  .panel h2 { font-size: 12px; margin: 0 0 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  label { display: block; font-size: 12.5px; margin: 12px 0 5px; color: var(--muted); font-weight: 600; }
+  label:first-of-type { margin-top: 0; }
+  input[type=text], input[type=number] { width: 100%; padding: 9px 11px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 13.5px; background: #fff; transition: border-color .12s; }
+  input[type=text]:focus, input[type=number]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  input[type=file] { font-size: 12.5px; width: 100%; }
+  input[type=checkbox] { margin-right: 7px; vertical-align: middle; }
+  .checkbox-row { display: flex; align-items: center; font-size: 13px; color: var(--text); margin-top: 12px; }
+
+  button { cursor: pointer; border: none; border-radius: var(--radius-sm); padding: 10px 16px; font-size: 13.5px; font-weight: 600; transition: background .12s, transform .06s, box-shadow .12s; font-family: inherit; }
+  button:active { transform: scale(.98); }
+  button:disabled { opacity: .45; cursor: default; transform: none; }
+  .btn-block { width: 100%; margin-top: 10px; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover:not(:disabled) { background: var(--accent-dark); }
+  .btn-secondary { background: #f1f2f5; color: var(--text); }
+  .btn-secondary:hover:not(:disabled) { background: #e6e7ec; }
+  .btn-commit { background: var(--green); color: #fff; }
+  .btn-commit:hover:not(:disabled) { background: #0f6430; }
+  .btn-ghost { background: transparent; color: var(--accent); padding: 7px 10px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 13px; }
+  .btn-ghost:hover { background: var(--accent-soft); border-color: var(--accent); }
+
+  .hint { font-size: 11.5px; color: var(--muted-soft); margin-top: 7px; line-height: 1.5; }
+  .code { font-family: ui-monospace, Consolas, monospace; font-size: 11.5px; background: #eef0f3; padding: 1px 5px; border-radius: 4px; }
+  #log { font-size: 11.5px; color: var(--muted); white-space: pre-wrap; max-height: 110px; overflow-y: auto; }
+  #log div { padding: 3px 0; border-bottom: 1px dashed var(--border-soft); }
+  #log div:last-child { border-bottom: none; }
+
+  .confirm-box { margin-top: 10px; padding: 12px; background: var(--amber-bg); border: 1px solid var(--amber-border); border-radius: var(--radius-sm); }
+  .confirm-box p { margin: 0 0 10px; font-size: 12.5px; color: var(--amber); }
+  .confirm-actions { display: flex; gap: 8px; }
+  .confirm-actions button { flex: 1; margin-top: 0; }
+
+  /* ---- main content ---- */
+  .stats-row { display: flex; gap: 12px; margin-bottom: 22px; }
+  .stat-card { flex: 1; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; box-shadow: var(--shadow); }
+  .stat-card .n { font-size: 24px; font-weight: 700; line-height: 1.1; }
+  .stat-card .l { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .stat-card.queue .n { color: var(--red); }
+  .stat-card.done .n { color: var(--green); }
+
+  .upload-strip { margin-bottom: 20px; }
+  .upload-strip-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+  .upload-chip { flex: 0 0 auto; width: 92px; text-align: center; }
+  .upload-chip img { width: 92px; height: 76px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--border); background: #fafafb; }
+  .upload-chip .fname { font-size: 10.5px; color: var(--muted); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  section.block { margin-bottom: 28px; }
+  section.block > h2 { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 9px; margin: 0 0 14px; }
+  .count-pill { font-size: 12px; font-weight: 700; background: var(--red-bg); color: var(--red); border-radius: 99px; padding: 2px 10px; }
+  .count-pill.ok { background: var(--green-bg); color: var(--green); }
+
+  .empty-state { background: var(--panel); border: 1px dashed var(--border); border-radius: var(--radius); padding: 28px; text-align: center; color: var(--muted); font-size: 13.5px; }
+
+  .cards { display: flex; flex-direction: column; gap: 12px; }
+  .doc-card { display: flex; gap: 14px; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); transition: opacity .25s, transform .25s; }
+  .doc-card.leaving { opacity: 0; transform: translateX(16px) scale(.98); }
+  .doc-thumb { width: 72px; height: 94px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--border); background: #fafafb; flex-shrink: 0; }
+  .doc-body { flex: 1; min-width: 0; }
+  .doc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .doc-id { font-weight: 700; font-size: 13.5px; }
+  .doc-amount { font-weight: 700; font-size: 14px; color: var(--text); }
+  .doc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .doc-reasons { margin: 10px 0 0; padding: 0; list-style: none; }
+  .doc-reasons li { font-size: 12.5px; color: var(--red); padding: 4px 0 4px 16px; position: relative; }
+  .doc-reasons li::before { content: "•"; position: absolute; left: 2px; }
+  .doc-reasons li b { font-family: ui-monospace, Consolas, monospace; font-weight: 700; font-size: 11px; }
+  .toggle-link { background: none; border: none; color: var(--muted); font-size: 11.5px; padding: 4px 0; cursor: pointer; text-decoration: underline; }
+  .expand-box { display: none; margin-top: 8px; padding: 10px; background: #fafbfc; border-radius: var(--radius-sm); max-height: 180px; overflow-y: auto; }
+  .expand-box ul { margin: 0; padding-left: 16px; font-size: 12px; color: var(--muted); }
+
+  .doc-actions { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 8px; }
+  .doc-actions-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .note-input { flex: 1; padding: 7px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 12.5px; }
+  .action-row { display: flex; gap: 8px; }
+  .action-row button { flex: 1; }
+  .btn-approve { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .btn-approve:hover:not(:disabled) { background: var(--green); color: #fff; }
+  .btn-keep { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .btn-keep:hover:not(:disabled) { background: var(--red); color: #fff; }
+
+  .done-list { display: flex; flex-direction: column; gap: 1px; background: var(--border-soft); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .done-row { display: flex; align-items: center; gap: 12px; background: var(--panel); padding: 10px 14px; font-size: 13px; }
+  .done-row img { width: 34px; height: 44px; object-fit: cover; border-radius: 5px; border: 1px solid var(--border); flex-shrink: 0; }
+  .done-row .doc-id { font-size: 12.5px; }
+  .done-row .lieferant { color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .done-row .amount { font-weight: 600; width: 100px; text-align: right; flex-shrink: 0; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 99px; font-size: 11.5px; font-weight: 700; flex-shrink: 0; }
+  .badge.freigeben { background: var(--green-bg); color: var(--green); }
+  .badge.hinschauen { background: var(--red-bg); color: var(--red); }
+  .tag-manuell { font-size: 10.5px; font-weight: 700; color: var(--amber); background: var(--amber-bg); border-radius: 99px; padding: 2px 8px; flex-shrink: 0; }
+  .done-row a.btn-ghost { padding: 5px 9px; font-size: 11.5px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<header>
+  <p class="eyebrow">Quellberg · Buchhaltung</p>
+  <h1>Beleg-Prüfung</h1>
+  <p>Belege analysieren, Originale ansehen und Grenzfälle in Sekunden entscheiden.</p>
+</header>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="panel">
+      <h2>1. Belege wählen</h2>
+      <label>Ordnerpfad (auf diesem Rechner)</label>
+      <input type="text" id="folderPath" value="{{ default_folder }}">
+      <button class="btn-primary btn-block" id="btnAnalyzeFolder">Analysieren</button>
+
+      <label>... oder neue Dateien hochladen</label>
+      <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png,.tif,.tiff,.webp">
+      <button class="btn-secondary btn-block" id="btnUpload">Hochladen &amp; Analysieren</button>
+      <div class="hint">Standard: die 16 mitgelieferten Testbelege. Auch <span class="code">eval/synthetic</span> oder <span class="code">eval/demo_prompt_injection</span> möglich.</div>
+    </div>
+
+    <div class="panel">
+      <h2>2. Policy (live)</h2>
+      <label>Toleranz nicht bestellte Zusatzpositionen (%)</label>
+      <input type="number" step="0.1" id="polExtraTol" value="{{ policy.extra_items_tolerance_pct }}">
+      <label>Freigabegrenze / Vier-Augen-Pflicht (EUR brutto)</label>
+      <input type="number" step="100" id="polThreshold" value="{{ policy.mandatory_review_amount_eur }}">
+      <div class="checkbox-row"><label style="display:inline;margin:0"><input type="checkbox" id="polNoPo" checked>Beleg ohne Bestellbezug → immer hinschauen</label></div>
+      <button class="btn-secondary btn-block" id="btnReeval">Mit dieser Policy neu auswerten</button>
+      <div class="hint">Nutzt bereits extrahierte Daten erneut (kein neuer API-Aufruf) - sofortiges Ergebnis.</div>
+    </div>
+
+    <div class="panel">
+      <h2>3. Übernehmen</h2>
+      <button class="btn-commit btn-block" id="btnCommit" disabled style="margin-top:0">In Ledger übernehmen</button>
+      <div id="commitConfirm" class="confirm-box" style="display:none">
+        <p>Wirklich endgültig ins Ledger übernehmen? Wirkt sich auf künftige Duplikats-/Mengenprüfungen aus.</p>
+        <div class="confirm-actions">
+          <button class="btn-commit" id="btnCommitConfirm">Ja, übernehmen</button>
+          <button class="btn-secondary" id="btnCommitCancel">Abbrechen</button>
+        </div>
+      </div>
+      <div class="hint">Schreibt das Ledger fort und aktualisiert <span class="code">results/ergebnis.csv</span>/<span class="code">.md</span> - wie ein echter CLI-Lauf.</div>
+    </div>
+
+    <div class="panel">
+      <h2>Protokoll</h2>
+      <div id="log"><div>Bereit.</div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="stats-row" id="summary" style="display:none">
+      <div class="stat-card"><div class="n" id="sumTotal">0</div><div class="l">Belege gesamt</div></div>
+      <div class="stat-card queue"><div class="n" id="sumHin">0</div><div class="l">zu prüfen</div></div>
+      <div class="stat-card done"><div class="n" id="sumFree">0</div><div class="l">freigegeben</div></div>
+    </div>
+
+    <div class="upload-strip" id="uploadStrip" style="display:none">
+      <section class="block" style="margin-bottom:20px">
+        <h2>Gerade hochgeladen</h2>
+        <div class="upload-strip-row" id="uploadStripRow"></div>
+      </section>
+    </div>
+
+    <div id="emptyState" class="empty-state">Links einen Ordner wählen oder Dateien hochladen und auf "Analysieren" klicken.</div>
+
+    <div id="resultsArea" style="display:none">
+      <section class="block">
+        <h2>Zu prüfen <span class="count-pill" id="queueCount">0</span></h2>
+        <div class="cards" id="queueCards"></div>
+        <div class="empty-state" id="queueEmpty" style="display:none">Keine offenen Punkte - alles entschieden.</div>
+      </section>
+
+      <section class="block">
+        <h2>Freigegeben / entschieden <span class="count-pill ok" id="doneCount">0</span></h2>
+        <div class="done-list" id="doneList"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentFolder = document.getElementById('folderPath').value;
+window.__docs = {};
+
+function log(msg) {
+  const el = document.getElementById('log');
+  const time = new Date().toLocaleTimeString('de-DE');
+  const row = document.createElement('div');
+  row.textContent = `[${time}] ${msg}`;
+  el.prepend(row);
+}
+
+function currentPolicyOverrides() {
+  return {
+    extra_items_tolerance_pct: parseFloat(document.getElementById('polExtraTol').value),
+    mandatory_review_amount_eur: parseFloat(document.getElementById('polThreshold').value),
+    no_po_match_means_hinschauen: document.getElementById('polNoPo').checked,
+  };
+}
+
+function fmtAmount(v) {
+  if (v === null || v === undefined) return '-';
+  return Number(v).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' €';
+}
+
+function thumbUrl(pfad) { return '/thumb?path=' + encodeURIComponent(pfad); }
+function openUrl(pfad) { return '/doc?path=' + encodeURIComponent(pfad); }
+
+function isQueued(d) { return d.endstatus === 'hinschauen' && !d.manuell; }
+
+function render(data) {
+  document.getElementById('summary').style.display = 'flex';
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('resultsArea').style.display = 'block';
+
+  window.__docs = {};
+  data.docs.forEach(d => { window.__docs[d.doc_id] = d; });
+
+  renderUploadStrip();
+  renderQueueAndDone();
+}
+
+function renderUploadStrip() {
+  const uploaded = Object.values(window.__docs).filter(d => d.neu_hochgeladen);
+  const wrap = document.getElementById('uploadStrip');
+  const row = document.getElementById('uploadStripRow');
+  if (!uploaded.length) { wrap.style.display = 'none'; row.innerHTML = ''; return; }
+  wrap.style.display = 'block';
+  row.innerHTML = uploaded.map(d => `
+    <div class="upload-chip">
+      <img src="${thumbUrl(d.pfad)}" onerror="this.style.visibility='hidden'">
+      <div class="fname" title="${d.datei}">${d.datei}</div>
+    </div>`).join('');
+}
+
+function renderQueueAndDone() {
+  const all = Object.values(window.__docs).sort((a, b) => a.doc_id.localeCompare(b.doc_id));
+  const queue = all.filter(isQueued);
+  const done = all.filter(d => !isQueued(d));
+
+  document.getElementById('sumTotal').textContent = all.length;
+  document.getElementById('sumHin').textContent = queue.length;
+  document.getElementById('sumFree').textContent = done.filter(d => d.endstatus === 'freigeben').length;
+  document.getElementById('queueCount').textContent = queue.length;
+  document.getElementById('doneCount').textContent = done.length;
+
+  document.getElementById('queueEmpty').style.display = queue.length ? 'none' : 'block';
+
+  const queueEl = document.getElementById('queueCards');
+  queueEl.innerHTML = '';
+  queue.forEach(d => queueEl.appendChild(buildCard(d)));
+
+  const doneEl = document.getElementById('doneList');
+  doneEl.innerHTML = done.map(d => buildDoneRow(d)).join('');
+
+  document.getElementById('btnCommit').disabled = false;
+}
+
+function buildCard(d) {
+  const card = document.createElement('div');
+  card.className = 'doc-card';
+  card.id = 'card-' + d.doc_id;
+  const gruende = d.gruende.map(g => `<li><b>[${g.id}]</b> ${g.nachricht}</li>`).join('') || '<li>keine</li>';
+  const info = d.info_notes.map(g => `<li><b>[${g.id}]</b> ${g.nachricht}</li>`).join('');
+  card.innerHTML = `
+    <img class="doc-thumb" src="${thumbUrl(d.pfad)}" onerror="this.style.visibility='hidden'">
+    <div class="doc-body">
+      <div class="doc-head">
+        <span class="doc-id">${d.doc_id}</span>
+        <span class="doc-amount">${fmtAmount(d.betrag_brutto_eur)}</span>
+      </div>
+      <div class="doc-sub">${d.lieferant || 'Lieferant unbekannt'} ${d.bestellnummer ? '· Bestellnr. ' + d.bestellnummer : ''}</div>
+      <ul class="doc-reasons">${gruende}</ul>
+      <button class="toggle-link" data-expand>Alle geprüften Punkte (${d.info_notes.length}) anzeigen</button>
+      <div class="expand-box"><ul>${info}</ul></div>
+      <div class="doc-actions">
+        <div class="doc-actions-top">
+          <a class="btn-ghost" href="${openUrl(d.pfad)}" target="_blank">Beleg öffnen ↗</a>
+          <input class="note-input" placeholder="Notiz (optional, z.B. 'telefonisch geklärt')">
+        </div>
+        <div class="action-row">
+          <button class="btn-approve" data-action="freigeben">Freigeben</button>
+          <button class="btn-keep" data-action="hinschauen">Hinschauen bestätigen</button>
+        </div>
+      </div>
+    </div>`;
+  card.querySelector('[data-expand]').onclick = (e) => {
+    const box = card.querySelector('.expand-box');
+    const open = box.style.display === 'block';
+    box.style.display = open ? 'none' : 'block';
+    e.target.textContent = (open ? 'Alle geprüften Punkte (' : 'Verbergen (') + (open ? d.info_notes.length + ') anzeigen' : d.info_notes.length + ')');
+  };
+  card.querySelectorAll('[data-action]').forEach(btn => {
+    btn.onclick = () => submitOverride(d.doc_id, btn.dataset.action, card.querySelector('.note-input').value, card);
+  });
+  return card;
+}
+
+function buildDoneRow(d) {
+  const badge = `<span class="badge ${d.endstatus}">${d.endstatus}</span>`;
+  const tag = d.manuell ? `<span class="tag-manuell">manuell</span>` : '';
+  return `
+    <div class="done-row">
+      <img src="${thumbUrl(d.pfad)}" onerror="this.style.visibility='hidden'">
+      <span class="doc-id">${d.doc_id}</span>
+      <span class="lieferant">${d.lieferant || '-'}</span>
+      ${badge} ${tag}
+      <span class="amount">${fmtAmount(d.betrag_brutto_eur)}</span>
+      <a class="btn-ghost" href="${openUrl(d.pfad)}" target="_blank">Öffnen ↗</a>
+    </div>`;
+}
+
+async function callApi(path, body) {
+  const res = await fetch(path, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Unbekannter Fehler');
+  return data;
+}
+
+async function analyze(folder) {
+  currentFolder = folder;
+  log(`Analysiere: ${folder} ...`);
+  try {
+    const data = await callApi('/api/analyze', {folder, policy: currentPolicyOverrides()});
+    render(data);
+    log(`Fertig: ${data.docs.filter(d=>d.endstatus==='freigeben').length} freigeben / ${data.docs.filter(d=>d.endstatus==='hinschauen').length} hinschauen (Vorschau, Ledger unverändert).`);
+  } catch (e) {
+    log('Fehler: ' + e.message);
+  }
+}
+
+document.getElementById('btnAnalyzeFolder').onclick = () => analyze(document.getElementById('folderPath').value);
+document.getElementById('btnReeval').onclick = () => analyze(currentFolder);
+
+document.getElementById('btnUpload').onclick = async () => {
+  const files = document.getElementById('fileInput').files;
+  if (!files.length) { log('Keine Dateien ausgewählt.'); return; }
+  const fd = new FormData();
+  for (const f of files) fd.append('files', f);
+  log(`Lade ${files.length} Datei(en) hoch ...`);
+  const res = await fetch('/api/upload', {method: 'POST', body: fd});
+  const data = await res.json();
+  if (!res.ok) { log('Fehler beim Upload: ' + data.error); return; }
+  document.getElementById('folderPath').value = data.folder;
+  log(`Hochgeladen: ${data.dateien.join(', ')}`);
+  await analyze(data.folder);
+};
+
+document.getElementById('btnCommit').onclick = () => {
+  document.getElementById('commitConfirm').style.display = 'block';
+};
+document.getElementById('btnCommitCancel').onclick = () => {
+  document.getElementById('commitConfirm').style.display = 'none';
+};
+document.getElementById('btnCommitConfirm').onclick = async () => {
+  document.getElementById('commitConfirm').style.display = 'none';
+  log('Übernehme ins Ledger ...');
+  try {
+    const data = await callApi('/api/commit', {folder: currentFolder, policy: currentPolicyOverrides()});
+    render(data);
+    const free = data.docs.filter(d=>d.endstatus==='freigeben').length;
+    log(`Ins Ledger übernommen: ${free} freigeben / ${data.docs.length - free} hinschauen (inkl. manueller Entscheidungen). results/ergebnis.csv aktualisiert.`);
+  } catch (e) {
+    log('Fehler: ' + e.message);
+  }
+};
+
+async function submitOverride(docId, decision, note, cardEl) {
+  const d = window.__docs[docId];
+  log(`Manuelle Entscheidung für ${docId}: ${decision} ...`);
+  try {
+    const data = await callApi('/api/override', {doc_id: docId, decision, original_decision: d.entscheidung, note});
+    d.manuell = data.manuell;
+    d.endstatus = data.manuell.entscheidung;
+    cardEl.classList.add('leaving');
+    log(`Gespeichert: ${docId} -> ${decision} (manuell). Wirkt beim nächsten "In Ledger übernehmen" auf ergebnis.csv/.md.`);
+    setTimeout(() => renderQueueAndDone(), 260);
+  } catch (e) {
+    log('Fehler: ' + e.message);
+  }
+}
+</script>
+</body>
+</html>

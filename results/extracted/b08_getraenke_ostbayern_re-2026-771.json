@@ -1,0 +1,44 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "invoice_number": "RE-2026-771",
+  "invoice_date": "2026-06-21",
+  "supplier_name": "Getränkefachgroßhandel Ostbayern",
+  "supplier_address": "Passau",
+  "supplier_tax_id": "DE 211 556 043",
+  "supplier_tax_id_type": "USt-IdNr",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "order_reference": null,
+  "net_amount": 1074.0,
+  "vat_amount": 204.06,
+  "vat_rate_pct": 19,
+  "gross_amount": 1278.06,
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "skonto_terms": null,
+  "pages_stated_total": 1,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Leergut-Kiste 24x0,33l, Rücknahme-Ausgleich",
+      "quantity": 120,
+      "unit_price": 4.5,
+      "line_total": 540.0
+    },
+    {
+      "position": 2,
+      "description": "Getränkekiste Kunststoff neu",
+      "quantity": 60,
+      "unit_price": 8.9,
+      "line_total": 534.0
+    }
+  ],
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "unreadable_reason": null,
+  "extraction_notes": null
+}

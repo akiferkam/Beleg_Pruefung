@@ -1,0 +1,50 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "invoice_number": "RE-2026-0331",
+  "invoice_date": "2026-06-11",
+  "supplier_name": "Kräuterhof Allgäu eG",
+  "supplier_address": "Kempten",
+  "supplier_tax_id": "DE 205 118 662",
+  "supplier_tax_id_type": "Steuernummer",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "currency": "EUR",
+  "net_amount": 4294.8,
+  "vat_amount": 296.43,
+  "vat_rate_pct": 7,
+  "gross_amount": 4591.23,
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "order_reference": null,
+  "pages_stated_total": 1,
+  "skonto_terms": null,
+  "unreadable_reason": null,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Melissenextrakt Bio 5l Kanister",
+      "quantity": 24,
+      "unit_price": 88.5,
+      "line_total": 2124.0
+    },
+    {
+      "position": 2,
+      "description": "Zitronenmelisse-Aroma natürlich 1l",
+      "quantity": 40,
+      "unit_price": 31.2,
+      "line_total": 1248.0
+    },
+    {
+      "position": 3,
+      "description": "Kräuterauszug Salbei-Thymian 5l",
+      "quantity": 12,
+      "unit_price": 76.9,
+      "line_total": 922.8
+    }
+  ]
+}

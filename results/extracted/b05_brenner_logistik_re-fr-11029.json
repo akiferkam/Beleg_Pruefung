@@ -1,0 +1,51 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "unreadable_reason": null,
+  "invoice_number": "FR-11029",
+  "invoice_date": "2026-06-28",
+  "supplier_name": "Brenner Logistik GmbH",
+  "supplier_address": "Regensburg",
+  "supplier_tax_id": "DE 177 330 914",
+  "supplier_tax_id_type": "USt-IdNr",
+  "supplier_iban": "DE89370400940532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "order_reference": null,
+  "currency": "EUR",
+  "net_amount": 1490.0,
+  "vat_amount": 283.1,
+  "vat_rate_pct": 19,
+  "gross_amount": 1773.1,
+  "skonto_terms": null,
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "pages_stated_total": 1,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Palettenversand Edeka Südbayern (ZL), 18 Paletten",
+      "quantity": 18,
+      "unit_price": 64.5,
+      "line_total": 1161.0
+    },
+    {
+      "position": 2,
+      "description": "Mautpauschale",
+      "quantity": 1,
+      "unit_price": 212.0,
+      "line_total": 212.0
+    },
+    {
+      "position": 3,
+      "description": "Ladungssicherung",
+      "quantity": 18,
+      "unit_price": 6.5,
+      "line_total": 117.0
+    }
+  ],
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "extraction_notes": null
+}

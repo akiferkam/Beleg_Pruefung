@@ -1,0 +1,17 @@
+[
+  {
+    "doc_id": "demo_injection_re-9001",
+    "file_hash": "f865443f43b27715169ce954a7643b92b59cf726fff6d065bb22b9da3cb3b0df",
+    "supplier_name": "Etikett & Söhne GmbH",
+    "invoice_number": "RE-9001",
+    "invoice_date": "2026-07-02",
+    "order_reference": "QB-10387",
+    "net_amount": 2940.0,
+    "gross_amount": 3498.6,
+    "total_quantity": 140000,
+    "line_items_fp": "f827dc823db9b1a0cfbc2b1a72f62d1026ee02b8642654e1f2e8ba6c59907483",
+    "supplier_iban": "DE89370400440532013000",
+    "decision": "hinschauen",
+    "processed_at": "2026-11-04T13:41:05.767810+00:00"
+  }
+]

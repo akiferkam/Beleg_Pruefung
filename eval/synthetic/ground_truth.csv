@@ -1,0 +1,7 @@
+﻿doc_id;erwartete_entscheidung;erwartete_check_ids;notiz
+s01_clean_new_invoice;freigeben;;Sauberer, unbekannter Beleg zu echter Bestellung - Generalisierungstest.
+s02_mahnung;hinschauen;A3;Mahnung, keine Rechnung - darf nie automatisch freigegeben werden.
+s03_gutschrift;hinschauen;A3;Gutschrift, keine Rechnung.
+s04_vat_error;hinschauen;C4;USt falsch berechnet (110 statt 171 EUR bei 19% auf 900 EUR).
+s05_iban_tampered;hinschauen;E4;IBAN-Pruefsumme ungueltig (letzte Ziffern manipuliert).
+s06_english_format;freigeben;;Englisches Zahlenformat (1,500.00) - darf keinen falschen Alarm ausloesen.

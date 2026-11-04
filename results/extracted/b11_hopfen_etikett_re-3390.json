@@ -1,0 +1,44 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "invoice_number": "RE-3390",
+  "invoice_date": "2026-06-23",
+  "supplier_name": "Hopfen & Etikett Druck GmbH",
+  "supplier_address": "Kelheim",
+  "supplier_tax_id": "DE 166 909 214",
+  "supplier_tax_id_type": "Steuernummer",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "net_amount": 804.75,
+  "vat_amount": 152.9,
+  "vat_rate_pct": 19,
+  "gross_amount": 957.65,
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "order_reference": null,
+  "pages_stated_total": 1,
+  "skonto_terms": null,
+  "unreadable_reason": null,
+  "extraction_notes": null,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Sixpack-Träger Apfelschorle, Kartonage",
+      "quantity": 5250,
+      "unit_price": 0.14,
+      "line_total": 719.25
+    },
+    {
+      "position": 2,
+      "description": "Sonderfarbe Grün, Aufschlag",
+      "quantity": 1,
+      "unit_price": 85.5,
+      "line_total": 85.5
+    }
+  ]
+}

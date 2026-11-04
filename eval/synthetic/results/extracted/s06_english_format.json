@@ -1,0 +1,36 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Longneck bottle 0.33l clear (plt)",
+      "quantity": 20,
+      "unit_price": 212.5,
+      "line_total": 4250.0
+    }
+  ],
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "invoice_number": "INV-2026-998",
+  "invoice_date": "2026-08-22",
+  "order_reference": "QB-10391",
+  "supplier_name": "Glashuette Weiden GmbH",
+  "supplier_address": "Weiden",
+  "supplier_tax_id": "DE 229 884 112",
+  "supplier_tax_id_type": "USt-IdNr",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH, Getraenkemanufaktur",
+  "recipient_address": "Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "net_amount": 4250.0,
+  "vat_amount": 807.5,
+  "vat_rate_pct": 19,
+  "gross_amount": 5057.5,
+  "skonto_terms": null,
+  "pages_stated_total": 1,
+  "non_invoice_statement": null,
+  "extraction_notes": "Supplier-Name erscheint im Kopf als \"Glashütte Weiden GmbH\" und im Textkörper als \"Glashuette Weiden GmbH\" (Transliteration) - wurde als identisch behandelt."
+}

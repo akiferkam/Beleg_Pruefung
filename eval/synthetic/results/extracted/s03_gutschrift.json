@@ -1,0 +1,35 @@
+{
+  "document_type": "Gutschrift",
+  "unreadable_or_incomplete": false,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Gutschrift Transportschaden",
+      "quantity": 100,
+      "unit_price": 0.62,
+      "line_total": 62.0
+    }
+  ],
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "invoice_number": "GS-331",
+  "invoice_date": "2026-08-15",
+  "order_reference": "QB-10398",
+  "supplier_name": "Kartonagen Beck GmbH",
+  "supplier_address": "Straubing",
+  "supplier_tax_id": null,
+  "supplier_tax_id_type": "unbekannt",
+  "supplier_iban": null,
+  "recipient_name": null,
+  "recipient_address": null,
+  "recipient_tax_id": null,
+  "net_amount": 62.0,
+  "vat_amount": 11.78,
+  "vat_rate_pct": 19,
+  "gross_amount": 73.78,
+  "skonto_terms": null,
+  "pages_stated_total": 1,
+  "extraction_notes": "Es handelt sich um eine Gutschrift, keine Rechnung. Lieferant/Empfänger-Adressen nur mit Ort angegeben, keine Steuernummer vorhanden."
+}

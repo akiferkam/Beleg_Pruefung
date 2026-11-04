@@ -1,0 +1,7 @@
+anthropic>=0.104
+pymupdf>=1.28
+pillow>=10.0
+pyyaml>=6.0
+python-dotenv>=1.0
+rapidfuzz>=3.0
+flask>=3.0

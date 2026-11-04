@@ -1,0 +1,183 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Bio-Rohrzucker 25kg Sack",
+      "quantity": 48,
+      "unit_price": 41.17,
+      "line_total": 1976.16
+    },
+    {
+      "position": 2,
+      "description": "Bio-Rohrzucker 10kg Sack",
+      "quantity": 30,
+      "unit_price": 17.83,
+      "line_total": 534.9
+    },
+    {
+      "position": 3,
+      "description": "Rohrohrzucker fein 25kg",
+      "quantity": 22,
+      "unit_price": 39.94,
+      "line_total": 878.68
+    },
+    {
+      "position": 4,
+      "description": "Puderzucker Bio 5kg",
+      "quantity": 18,
+      "unit_price": 9.61,
+      "line_total": 172.98
+    },
+    {
+      "position": 5,
+      "description": "Invertzuckersirup 20kg Kanister",
+      "quantity": 12,
+      "unit_price": 33.28,
+      "line_total": 399.36
+    },
+    {
+      "position": 6,
+      "description": "Traubenzucker 10kg",
+      "quantity": 9,
+      "unit_price": 14.77,
+      "line_total": 132.93
+    },
+    {
+      "position": 7,
+      "description": "Karamellsirup 5l",
+      "quantity": 14,
+      "unit_price": 22.19,
+      "line_total": 310.66
+    },
+    {
+      "position": 8,
+      "description": "Bio-Rohrzucker 25kg Sack (Charge B)",
+      "quantity": 16,
+      "unit_price": 41.03,
+      "line_total": 656.48
+    },
+    {
+      "position": 9,
+      "description": "Melasse 20kg Eimer",
+      "quantity": 7,
+      "unit_price": 28.55,
+      "line_total": 199.85
+    },
+    {
+      "position": 10,
+      "description": "Fruktose kristallin 10kg",
+      "quantity": 11,
+      "unit_price": 19.66,
+      "line_total": 216.26
+    },
+    {
+      "position": 11,
+      "description": "Zuckercouleur E150a 5l",
+      "quantity": 6,
+      "unit_price": 41.9,
+      "line_total": 251.4
+    },
+    {
+      "position": 12,
+      "description": "Bio-Puderzucker 10kg",
+      "quantity": 8,
+      "unit_price": 18.42,
+      "line_total": 147.36
+    },
+    {
+      "position": 13,
+      "description": "Dextrose Monohydrat 25kg",
+      "quantity": 5,
+      "unit_price": 37.11,
+      "line_total": 185.55
+    },
+    {
+      "position": 14,
+      "description": "Sirup-Grundstock neutral 20l",
+      "quantity": 10,
+      "unit_price": 24.88,
+      "line_total": 248.8
+    },
+    {
+      "position": 15,
+      "description": "Bio-Rohrzucker 1kg Beutel VE12",
+      "quantity": 20,
+      "unit_price": 21.14,
+      "line_total": 422.8
+    },
+    {
+      "position": 16,
+      "description": "Kandiszucker braun 5kg",
+      "quantity": 13,
+      "unit_price": 12.73,
+      "line_total": 165.49
+    },
+    {
+      "position": 17,
+      "description": "Zuckerersatz Erythrit 10kg",
+      "quantity": 4,
+      "unit_price": 58.29,
+      "line_total": 233.16
+    },
+    {
+      "position": 18,
+      "description": "Bio-Vollrohrzucker 25kg",
+      "quantity": 9,
+      "unit_price": 43.61,
+      "line_total": 392.49
+    },
+    {
+      "position": 19,
+      "description": "Glukosesirup DE38 25kg",
+      "quantity": 6,
+      "unit_price": 31.47,
+      "line_total": 188.82
+    },
+    {
+      "position": 20,
+      "description": "Ahornsirup Grade A 5l",
+      "quantity": 3,
+      "unit_price": 62.08,
+      "line_total": 186.24
+    },
+    {
+      "position": 21,
+      "description": "Reissirup Bio 20kg",
+      "quantity": 5,
+      "unit_price": 44.9,
+      "line_total": 224.5
+    },
+    {
+      "position": 22,
+      "description": "Agavendicksaft 10kg",
+      "quantity": 7,
+      "unit_price": 33.52,
+      "line_total": 234.64
+    }
+  ],
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "invoice_number": "RE-8841",
+  "invoice_date": "2026-06-24",
+  "order_reference": "QB-10412",
+  "supplier_name": "Süddeutsche Zucker-Handels GmbH",
+  "supplier_address": "Ochsenfurt",
+  "supplier_tax_id": "DE 189 447 203",
+  "supplier_tax_id_type": "Steuernummer",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "net_amount": 8371.98,
+  "vat_amount": 586.04,
+  "vat_rate_pct": 7,
+  "gross_amount": 8958.02,
+  "skonto_terms": null,
+  "pages_stated_total": 2,
+  "non_invoice_statement": null,
+  "extraction_notes": "Die Steuernummer ist als \"Steuernr.\" bezeichnet, folgt aber einem Format (DE 189 447 203), das auch einer USt-IdNr ähneln könnte - wörtlich als Steuernummer übernommen, da so beschriftet."
+}

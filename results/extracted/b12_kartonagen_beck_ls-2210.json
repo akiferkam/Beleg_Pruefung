@@ -1,0 +1,43 @@
+{
+  "document_type": "Lieferschein",
+  "unreadable_or_incomplete": false,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Umkarton 24x0,33l bedruckt",
+      "quantity": 1500,
+      "unit_price": null,
+      "line_total": null
+    },
+    {
+      "position": 2,
+      "description": "Zwischenlage Wellpappe",
+      "quantity": 1500,
+      "unit_price": null,
+      "line_total": null
+    }
+  ],
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "invoice_number": "LS-2210",
+  "invoice_date": "2026-06-20",
+  "order_reference": "QB-10398",
+  "supplier_name": "Kartonagen Beck GmbH",
+  "supplier_address": "Straubing",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "supplier_tax_id": null,
+  "supplier_tax_id_type": "unbekannt",
+  "recipient_tax_id": null,
+  "net_amount": null,
+  "vat_amount": null,
+  "vat_rate_pct": null,
+  "gross_amount": null,
+  "skonto_terms": null,
+  "supplier_iban": null,
+  "pages_stated_total": 1,
+  "non_invoice_statement": null,
+  "extraction_notes": "Es handelt sich um einen Lieferschein ohne Preisangaben (Einzelpreis/Gesamt-Spalten sind leer). Keine Beträge ermittelbar."
+}

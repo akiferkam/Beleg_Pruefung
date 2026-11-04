@@ -1,0 +1,50 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "invoice_number": "RE-4471",
+  "invoice_date": "2026-05-18",
+  "order_reference": "QB-10387",
+  "supplier_name": "Etikett & Söhne GmbH",
+  "supplier_address": "Nürnberg",
+  "supplier_tax_id": "DE 216 445 118",
+  "supplier_tax_id_type": "USt-IdNr",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "currency": "EUR",
+  "net_amount": 3230.0,
+  "vat_amount": 613.7,
+  "vat_rate_pct": 19,
+  "gross_amount": 3843.7,
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "skonto_terms": null,
+  "pages_stated_total": 1,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Rollen-Etikett Klassik Zuckerfrei Apfel 0,5l",
+      "quantity": 80000,
+      "unit_price": 0.02,
+      "line_total": 1680.0
+    },
+    {
+      "position": 2,
+      "description": "Rollen-Etikett Klassik Zuckerfrei Zitrone 0,5l",
+      "quantity": 60000,
+      "unit_price": 0.02,
+      "line_total": 1260.0
+    },
+    {
+      "position": 3,
+      "description": "Druckvorlagen-Setup einmalig",
+      "quantity": 2,
+      "unit_price": 145.0,
+      "line_total": 290.0
+    }
+  ],
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "extraction_notes": null
+}

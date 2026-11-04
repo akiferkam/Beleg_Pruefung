@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.cache/
+ui/uploads/
+*.log
+results/overrides.json

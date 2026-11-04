@@ -1,0 +1,43 @@
+{
+  "document_type": "Angebot",
+  "unreadable_or_incomplete": false,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "CIP-Reinigung Lagertanks 5x, Komplettpaket",
+      "quantity": 5,
+      "unit_price": 680.0,
+      "line_total": 3400.0
+    },
+    {
+      "position": 2,
+      "description": "Desinfektion & Protokoll",
+      "quantity": 5,
+      "unit_price": 120.0,
+      "line_total": 600.0
+    }
+  ],
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "invoice_number": "AN-2026-118",
+  "invoice_date": "2026-06-30",
+  "order_reference": "QB-10421",
+  "supplier_name": "Tankreinigung Süddeutschland GmbH",
+  "supplier_address": "Ingolstadt",
+  "supplier_tax_id": "DE 187 220 903",
+  "supplier_tax_id_type": "Steuernummer",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "net_amount": 4000.0,
+  "vat_amount": 760.0,
+  "vat_rate_pct": 19,
+  "gross_amount": 4760.0,
+  "skonto_terms": null,
+  "pages_stated_total": 1,
+  "non_invoice_statement": "Dieses Angebot ist freibleibend und 30 Tage gültig. Es handelt sich nicht um eine Rechnung.",
+  "extraction_notes": "Dokument ist ausdrücklich als Angebot gekennzeichnet, keine Rechnung."
+}

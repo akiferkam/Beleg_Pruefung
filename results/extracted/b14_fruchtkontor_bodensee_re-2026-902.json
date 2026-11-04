@@ -1,0 +1,44 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "unreadable_reason": null,
+  "invoice_number": "RE-2026-902",
+  "invoice_date": "2026-06-26",
+  "order_reference": "QB-10416",
+  "supplier_name": "Fruchtkontor Bodensee GmbH",
+  "supplier_address": "Friedrichshafen",
+  "supplier_tax_id": "DE 202 774 118",
+  "supplier_tax_id_type": "Steuernummer",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "currency": "EUR",
+  "net_amount": 10110.0,
+  "vat_amount": 707.7,
+  "vat_rate_pct": 7,
+  "gross_amount": 10817.7,
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "skonto_terms": null,
+  "pages_stated_total": 1,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Apfelsaftkonzentrat 70 Brix, 1000l IBC",
+      "quantity": 8,
+      "unit_price": 1240.0,
+      "line_total": 9920.0
+    },
+    {
+      "position": 2,
+      "description": "Ascorbinsäure-Zusatz (Antioxidans)",
+      "quantity": 8,
+      "unit_price": 23.75,
+      "line_total": 190.0
+    }
+  ],
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "extraction_notes": null
+}

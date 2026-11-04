@@ -1,0 +1,17 @@
+doc_id;erwartete_entscheidung;erwartete_check_ids;notiz
+b01_etikett_soehne_re-4471;freigeben;;Setup-Zusatzposition 9,9% des Bestellwerts, innerhalb 10%-Toleranz.
+b02_glashuette_weiden_re-2026-559;freigeben;;Zusatzposition 3,8% des Bestellwerts, innerhalb 10%-Toleranz.
+b03_sued_zucker_re-8841;hinschauen;C2,D6;Summe der Positionen weicht 12,47 EUR vom Nettobetrag ab, zudem Rahmenvertrag ohne Referenzwert fuer Zusatzpositionen.
+b04_kraeuterhof_allgaeu_re-2026-0331;hinschauen;C4,D1;USt falsch berechnet (296,43 statt 300,64 EUR); keine Bestellnummer.
+b05_brenner_logistik_re-fr-11029;hinschauen;D1,E4;Keine Bestellnummer; IBAN-Pruefsumme ungueltig.
+b06_kolb_re-2026-0447;hinschauen;D6;Nicht bestellte Zusatzpositionen (Ersatzteil+Anfahrt) 36% des Bestellwerts, ueber Toleranz.
+b07_kronkorken_mueller_re-5567;hinschauen;D5;200.000 bestellt, 250.000 in Rechnung gestellt.
+b08_getraenke_ostbayern_re-2026-771;hinschauen;D1;Keine Bestellnummer, Lieferant nicht in bestellungen.csv.
+b09_federkiel_design_re-2026-14;hinschauen;B3,D1;Keine Steuernummer/USt-IdNr; keine Bestellnummer.
+b10_kolb_re-2026-0489;hinschauen;D5,D6;Inhaltliches Duplikat von b06 unter neuer Rechnungsnummer; kumulative Menge ueberschritten.
+b11_hopfen_etikett_re-3390;hinschauen;A5,D1;Kein ausgewiesener Bruttobetrag im Dokument; keine Bestellnummer.
+b12_kartonagen_beck_ls-2210;hinschauen;A3;Lieferschein, keine Rechnung.
+b13_nordic_caps_inv-2026-338;hinschauen;D1;Keine Bestellnummer (Reverse-Charge-Formalien selbst sind korrekt).
+b14_fruchtkontor_bodensee_re-2026-902;freigeben;;Zusatzposition 1,9% des Bestellwerts, innerhalb 10%-Toleranz.
+b15_tankreinigung_sued_an-2026-118;hinschauen;A3;Angebot, keine Rechnung.
+b16_brauereibedarf_hartmann_re-7712;hinschauen;D1;Keine Bestellnummer (ansonsten rechnerisch einwandfrei).

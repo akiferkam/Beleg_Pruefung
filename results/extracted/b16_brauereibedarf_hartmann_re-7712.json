@@ -1,0 +1,134 @@
+{
+  "document_type": "Rechnung",
+  "unreadable_or_incomplete": false,
+  "line_items": [
+    {
+      "position": 1,
+      "description": "Schlauchschelle W4 Edelstahl VE100",
+      "quantity": 12,
+      "unit_price": 18.4,
+      "line_total": 220.8
+    },
+    {
+      "position": 2,
+      "description": "Lebensmittelschlauch DN25, Meter",
+      "quantity": 60,
+      "unit_price": 7.9,
+      "line_total": 474.0
+    },
+    {
+      "position": 3,
+      "description": "Dichtring EPDM DN50 VE25",
+      "quantity": 8,
+      "unit_price": 14.25,
+      "line_total": 114.0
+    },
+    {
+      "position": 4,
+      "description": "Kugelhahn Edelstahl DN25",
+      "quantity": 6,
+      "unit_price": 38.6,
+      "line_total": 231.6
+    },
+    {
+      "position": 5,
+      "description": "Manometer 0-6 bar, Glyzerin",
+      "quantity": 4,
+      "unit_price": 29.9,
+      "line_total": 119.6
+    },
+    {
+      "position": 6,
+      "description": "Reinigungsbürste Tank, lang",
+      "quantity": 10,
+      "unit_price": 12.3,
+      "line_total": 123.0
+    },
+    {
+      "position": 7,
+      "description": "Filtermatte 60x60, VE5",
+      "quantity": 5,
+      "unit_price": 41.0,
+      "line_total": 205.0
+    },
+    {
+      "position": 8,
+      "description": "Handschuhe Nitril Gr.L, Box",
+      "quantity": 20,
+      "unit_price": 8.75,
+      "line_total": 175.0
+    },
+    {
+      "position": 9,
+      "description": "Sicherheitsbrille klar",
+      "quantity": 15,
+      "unit_price": 6.4,
+      "line_total": 96.0
+    },
+    {
+      "position": 10,
+      "description": "PTFE-Dichtband Rolle",
+      "quantity": 24,
+      "unit_price": 2.15,
+      "line_total": 51.6
+    },
+    {
+      "position": 11,
+      "description": "Schmierfett lebensmittelecht 1kg",
+      "quantity": 6,
+      "unit_price": 22.5,
+      "line_total": 135.0
+    },
+    {
+      "position": 12,
+      "description": "Kabelbinder 300mm VE100",
+      "quantity": 8,
+      "unit_price": 4.8,
+      "line_total": 38.4
+    },
+    {
+      "position": 13,
+      "description": "Warnschild Reinigung läuft",
+      "quantity": 10,
+      "unit_price": 5.9,
+      "line_total": 59.0
+    },
+    {
+      "position": 14,
+      "description": "Eimer Kunststoff 12l",
+      "quantity": 12,
+      "unit_price": 6.2,
+      "line_total": 74.4
+    },
+    {
+      "position": 15,
+      "description": "Wischtücher Rolle VE6",
+      "quantity": 10,
+      "unit_price": 11.4,
+      "line_total": 114.0
+    }
+  ],
+  "currency": "EUR",
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "manipulation_attempt": null,
+  "invoice_number": "RE-7712",
+  "invoice_date": "2026-06-13",
+  "supplier_name": "Brauereibedarf Hartmann GmbH",
+  "supplier_address": "Bamberg",
+  "supplier_tax_id": "DE 155 019 883",
+  "supplier_tax_id_type": "Steuernummer",
+  "supplier_iban": "DE89370400440532013000",
+  "recipient_name": "Quellberg GmbH",
+  "recipient_address": "Limonadenweg 3, 94032 Passau",
+  "recipient_tax_id": null,
+  "net_amount": 2231.4,
+  "vat_amount": 423.97,
+  "vat_rate_pct": 19,
+  "gross_amount": 2655.37,
+  "skonto_terms": "14 Tage 2% Skonto, 30 Tage netto",
+  "order_reference": null,
+  "pages_stated_total": 1,
+  "non_invoice_statement": null,
+  "extraction_notes": "Die Steuernummer des Lieferanten ist mit \"DE 155 019 883\" angegeben; das Format entspricht eher einer USt-IdNr (DE + 9 Ziffern), ist aber explizit als \"Steuernr.\" bezeichnet - daher wörtlich übernommen, Typ gemäß Beschriftung als Steuernummer eingeordnet."
+}

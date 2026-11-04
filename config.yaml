@@ -1,0 +1,51 @@
+# Beleg-Prüfung für Quellberg — zentrale Konfiguration.
+# Alle Schwellenwerte und Policies hier, damit eine Live-Änderung im Gespräch
+# eine Ein-Zeilen-Änderung ist, kein Code-Umbau.
+
+company:
+  name: "Quellberg GmbH"
+  address_contains: ["Limonadenweg", "94032 Passau"]   # grobe Freitext-Prüfung, kein strikter Match
+  vat_id: "DE811907980"   # Leerzeichen/Formatierung wird vor dem Vergleich entfernt
+
+model:
+  name: "claude-sonnet-5"
+  max_tokens: 4096
+
+policy:
+  # D6: Summe der nicht bestellten Zusatzpositionen darf bis zu diesem Anteil
+  # des Bestellwerts betragen, bevor es zu hinschauen führt.
+  extra_items_tolerance_pct: 10.0
+
+  # D1: Rechnung ohne Bestellbezug (keine Bestellnummer oder nicht in bestellungen.csv) -> immer hinschauen.
+  # Grund: ohne Bestellbezug kann nicht geprüft werden, ob die Ware/Leistung je bestellt wurde.
+  no_po_match_means_hinschauen: true
+
+  # F1: Rechnungsbetrag (brutto) oberhalb dieser Grenze -> immer hinschauen (Vier-Augen-Prinzip),
+  # unabhängig davon, ob sonst alles stimmt.
+  mandatory_review_amount_eur: 50000.0
+
+  # C1: Positions-Arithmetik. Toleranz pro Einheit wegen gerundeter Anzeige-Einzelpreise
+  # (z.B. 0,021 € wird als 0,02 € angezeigt). |menge * einzelpreis - gesamt| <= menge * toleranz.
+  line_arithmetic_tolerance_per_unit_eur: 0.005
+
+  # C2: Summe der Positionssummen vs. ausgewiesener Nettobetrag.
+  net_sum_tolerance_eur: 0.05
+
+  # C4/C5: USt-Berechnung und Brutto = Netto + USt.
+  vat_amount_tolerance_eur: 0.02
+  gross_amount_tolerance_eur: 0.02
+
+  valid_vat_rates_pct: [0, 7, 19]
+
+  # A5: Grounding — ein aus dem Dokument extrahierter Betrag muss im Rohtext/OCR
+  # (nach Normalisierung) wiederzufinden sein, sonst Halluzinationsverdacht.
+  grounding_enabled: true
+
+  # D3: Fuzzy-Match-Schwelle (0-100, rapidfuzz) für Lieferant vs. bestellungen.csv.
+  supplier_fuzzy_match_min_score: 70
+
+paths:
+  orders_csv: "belege/bestellungen.csv"
+  ledger_file: "ledger/ledger.json"
+  results_dir: "results"
+  extracted_json_dir: "results/extracted"
