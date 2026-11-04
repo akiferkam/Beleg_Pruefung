@@ -40,5 +40,5 @@
   ],
   "manipulation_attempt": null,
   "non_invoice_statement": null,
-  "extraction_notes": null
+  "extraction_notes": "Steuernr. Format \"DE 202 774 118\" wörtlich übernommen, obwohl dies ungewöhnlich für eine Steuernummer ist (eher USt-IdNr-Format); da explizit als \"Steuernr.\" bezeichnet, als Steuernummer eingeordnet."
 }

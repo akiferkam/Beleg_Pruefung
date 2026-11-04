@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
-Beleg-Prüfung für Quellberg — kleine Web-Oberfläche.
+Beleg-Prüfung für Quellberg — JSON-API für das Web-Frontend (web/, React).
 
-Dünner Aufsatz auf dieselbe Pipeline wie die CLI (scripts/pipeline.py).
+Dünner Aufsatz auf dieselbe Pipeline wie die CLI (scripts/pipeline.py). Reine
+API (kein HTML-Rendering) - die Oberfläche lebt komplett in web/, das diese
+Endpunkte per fetch() aufruft (siehe web/src/lib/api/rest.ts).
+
 Zwei Modi:
   - "Analysieren": Vorschau, schreibt NICHTS ins Ledger (beliebig oft
     wiederholbar, z.B. nach einer Config-Änderung - ohne Zwischenstände
@@ -11,7 +14,7 @@ Zwei Modi:
   - "In Ledger übernehmen": wie ein echter CLI-Lauf - schreibt das Ledger
     fort und aktualisiert results/ergebnis.csv / .md.
 
-Start: python ui/app.py   (dann http://127.0.0.1:5050 öffnen)
+Start: python api/app.py   (API dann auf http://127.0.0.1:5050)
 """
 from __future__ import annotations
 
@@ -27,7 +30,8 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, "scripts"))
 import yaml  # noqa: E402
 from anthropic import Anthropic  # noqa: E402
 from dotenv import load_dotenv  # noqa: E402
-from flask import Flask, Response, abort, jsonify, render_template, request, send_file  # noqa: E402
+from flask import Flask, Response, abort, jsonify, request, send_file  # noqa: E402
+from flask_cors import CORS  # noqa: E402
 
 import overrides as overrides_mod  # noqa: E402
 import pipeline  # noqa: E402
@@ -45,6 +49,10 @@ OVERRIDES_PATH = os.path.join(RESULTS_DIR, "overrides.json")
 VIEWABLE_SUFFIXES = {".pdf", ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".webp"}
 
 app = Flask(__name__)
+# Nur für /api/*: erlaubt dem lokalen Vite-Dev-Server (anderer Port), die JSON-API
+# per fetch() aufzurufen. /doc und /thumb brauchen das nicht (<img>/<a> sind nicht
+# CORS-pflichtig) und bleiben bewusst ungeöffnet.
+CORS(app, resources={r"/api/*": {"origins": r"http://(localhost|127\.0\.0\.1):\d+"}})
 _client: Anthropic | None = None
 
 
@@ -103,6 +111,27 @@ def serialize(processed: list[pipeline.ProcessedDoc], upload_folder: str | None 
             "gruende": [{"id": f.check_id, "nachricht": f.message} for f in doc.decision.blocking_reasons],
             "info_notes": [{"id": f.check_id, "nachricht": f.message} for f in doc.decision.info_notes],
             "fehler": doc.extraction_error,
+            # Zusätzliche Detailfelder (für die Beleg-Detailansicht) - nicht
+            # entscheidungsrelevant, rein informativ, direkt aus der Extraktion.
+            "belegtyp": ex.get("document_type"),
+            "lieferant_adresse": ex.get("supplier_address"),
+            "lieferant_steuernr": ex.get("supplier_tax_id"),
+            "iban": ex.get("supplier_iban"),
+            "rechnungsdatum": ex.get("invoice_date"),
+            "betrag_netto_eur": ex.get("net_amount"),
+            "ust_satz_pct": ex.get("vat_rate_pct"),
+            "ust_betrag_eur": ex.get("vat_amount"),
+            "skonto": ex.get("skonto_terms"),
+            "manipulationsversuch": ex.get("manipulation_attempt"),
+            "positionen": [
+                {
+                    "beschreibung": item.get("description"),
+                    "menge": item.get("quantity"),
+                    "einzelpreis": item.get("unit_price"),
+                    "gesamt": item.get("line_total"),
+                }
+                for item in (ex.get("line_items") or [])
+            ],
         })
     out.sort(key=lambda r: r["doc_id"])
     return out
@@ -110,8 +139,8 @@ def serialize(processed: list[pipeline.ProcessedDoc], upload_folder: str | None 
 
 @app.route("/")
 def index():
-    config = load_config()
-    return render_template("index.html", policy=config["policy"], default_folder=os.path.join(PROJECT_ROOT, "belege"))
+    """Kein UI mehr hier - die Oberfläche läuft unter web/ (React, siehe README)."""
+    return jsonify({"status": "ok", "service": "beleg-pruefung-api", "ui": "siehe web/ (npm run dev)"})
 
 
 @app.route("/api/upload", methods=["POST"])

@@ -1,6 +1,7 @@
 {
   "document_type": "Rechnung",
   "unreadable_or_incomplete": false,
+  "unreadable_reason": null,
   "invoice_number": "RE-2026-0331",
   "invoice_date": "2026-06-11",
   "supplier_name": "Kräuterhof Allgäu eG",
@@ -11,19 +12,16 @@
   "recipient_name": "Quellberg GmbH",
   "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
   "recipient_tax_id": null,
+  "order_reference": null,
   "currency": "EUR",
   "net_amount": 4294.8,
   "vat_amount": 296.43,
   "vat_rate_pct": 7,
   "gross_amount": 4591.23,
+  "skonto_terms": null,
   "reverse_charge": false,
   "reverse_charge_note_present": false,
-  "manipulation_attempt": null,
-  "non_invoice_statement": null,
-  "order_reference": null,
   "pages_stated_total": 1,
-  "skonto_terms": null,
-  "unreadable_reason": null,
   "line_items": [
     {
       "position": 1,
@@ -46,5 +44,8 @@
       "unit_price": 76.9,
       "line_total": 922.8
     }
-  ]
+  ],
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "extraction_notes": null
 }

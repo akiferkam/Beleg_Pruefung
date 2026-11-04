@@ -30,7 +30,7 @@
   "supplier_tax_id_type": "Steuernummer",
   "supplier_iban": "DE89370400440532013000",
   "recipient_name": "Quellberg GmbH",
-  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_address": "Limonadenweg 3, 94032 Passau",
   "recipient_tax_id": null,
   "net_amount": 4000.0,
   "vat_amount": 760.0,

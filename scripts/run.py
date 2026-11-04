@@ -11,7 +11,7 @@ und results/ergebnis.md. Die Entscheidung wird ausschließlich in Python
 (checks/) getroffen - das LLM (extract.py) liefert nur strukturierte Daten.
 
 Die eigentliche Pipeline steckt in pipeline.py und wird von diesem CLI-Skript
-und von ui/app.py (Web-Oberfläche) gemeinsam genutzt.
+und von api/app.py (Web-API) gemeinsam genutzt.
 """
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 # Ergebnis Beleg-Prüfung
 
-Erzeugt: 2026-11-04T18:11:09.660215+00:00
+Erzeugt: 2026-11-04T22:12:01.170287+00:00
 
 
 **3 freigeben / 13 hinschauen** von 16 Belegen.
@@ -127,9 +127,9 @@ Erzeugt: 2026-11-04T18:11:09.660215+00:00
   - [A3] Belegtyp: Rechnung.
   - [A4] Seitenzahl stimmt (2/2).
   - [A5] Alle geprüften Beträge/Mengen (36) im Rohtext wiedergefunden.
-  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau.
+  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau.
   - [B2] Lieferant vollständig angegeben: Süddeutsche Zucker-Handels GmbH, Ochsenfurt.
-  - [B3] Steuernummer des Lieferanten vorhanden: DE 189 447 203.
+  - [B3] USt-IdNr des Lieferanten vorhanden: DE 189 447 203.
   - [B4] Rechnungsnummer RE-8841, Datum 2026-06-24 plausibel.
   - [B5] Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen.
   - [B6] Kein 0%-Fall, Prüfung entfällt.
@@ -242,7 +242,7 @@ Erzeugt: 2026-11-04T18:11:09.660215+00:00
   - [A3] Belegtyp: Rechnung.
   - [A4] Seitenzahl stimmt (1/1).
   - [A5] Alle geprüften Beträge/Mengen (6) im Rohtext wiedergefunden.
-  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau.
+  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau.
   - [B2] Lieferant vollständig angegeben: Maschinenservice Kolb, Landshut.
   - [B3] Steuernummer des Lieferanten vorhanden: DE 198 220 471.
   - [B4] Rechnungsnummer RE-2026-0447, Datum 2026-06-15 plausibel.
@@ -284,7 +284,7 @@ Erzeugt: 2026-11-04T18:11:09.660215+00:00
   - [A3] Belegtyp: Rechnung.
   - [A4] Seitenzahl stimmt (1/1).
   - [A5] Alle geprüften Beträge/Mengen (5) im Rohtext wiedergefunden.
-  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau.
+  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau.
   - [B2] Lieferant vollständig angegeben: Kronkorken Müller KG, Fürth.
   - [B3] Steuernummer des Lieferanten vorhanden: DE 144 887 320.
   - [B4] Rechnungsnummer RE-5567, Datum 2026-06-19 plausibel.
@@ -442,7 +442,7 @@ Erzeugt: 2026-11-04T18:11:09.660215+00:00
   - [A2] Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert.
   - [A3] Belegtyp: Rechnung.
   - [A4] Seitenzahl stimmt (1/1).
-  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau.
+  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau.
   - [B2] Lieferant vollständig angegeben: Hopfen & Etikett Druck GmbH, Kelheim.
   - [B3] Steuernummer des Lieferanten vorhanden: DE 166 909 214.
   - [B4] Rechnungsnummer RE-3390, Datum 2026-06-23 plausibel.
@@ -493,7 +493,7 @@ Erzeugt: 2026-11-04T18:11:09.660215+00:00
   - [A3] Belegtyp: Rechnung.
   - [A4] Seitenzahl stimmt (1/1).
   - [A5] Alle geprüften Beträge/Mengen (4) im Rohtext wiedergefunden.
-  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau.
+  - [B1] Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau.
   - [B2] Lieferant vollständig angegeben: Nordic Bottle Caps ApS, Aarhus, Dänemark.
   - [B3] USt-IdNr des Lieferanten vorhanden: DK 38 55 21 09.
   - [B4] Rechnungsnummer INV-2026-338, Datum 2026-06-17 plausibel.
@@ -606,4 +606,4 @@ Erzeugt: 2026-11-04T18:11:09.660215+00:00
   - [E5] Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich.
   - [E6] Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden.
   - [F1] Rechnungsbetrag 2655.37 € unterhalb der Freigabegrenze von 50000.00 €.
-  - [F2] Skonto-Hinweis im Beleg: 14 Tage 2% Skonto, 30 Tage netto.
+  - [F2] Skonto-Hinweis im Beleg: 14 Tage 2% Skonto, 30 Tage netto..

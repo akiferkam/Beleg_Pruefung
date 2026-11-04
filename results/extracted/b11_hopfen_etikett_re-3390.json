@@ -9,7 +9,7 @@
   "supplier_tax_id_type": "Steuernummer",
   "supplier_iban": "DE89370400440532013000",
   "recipient_name": "Quellberg GmbH",
-  "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
+  "recipient_address": "Limonadenweg 3, 94032 Passau",
   "recipient_tax_id": null,
   "net_amount": 804.75,
   "vat_amount": 152.9,
@@ -18,13 +18,6 @@
   "currency": "EUR",
   "reverse_charge": false,
   "reverse_charge_note_present": false,
-  "manipulation_attempt": null,
-  "non_invoice_statement": null,
-  "order_reference": null,
-  "pages_stated_total": 1,
-  "skonto_terms": null,
-  "unreadable_reason": null,
-  "extraction_notes": null,
   "line_items": [
     {
       "position": 1,
@@ -40,5 +33,12 @@
       "unit_price": 85.5,
       "line_total": 85.5
     }
-  ]
+  ],
+  "skonto_terms": null,
+  "order_reference": null,
+  "pages_stated_total": 1,
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
+  "unreadable_reason": null,
+  "extraction_notes": "Menge Pos1 im Bild als \"5.250\" dargestellt (deutsches Tausendertrennzeichen), interpretiert als 5250 Stück, konsistent mit Einzelpreis 0,14 x 5250 = 735 - Abweichung zum angegebenen Gesamtbetrag 719,25 wird nicht korrigiert, sondern wie im Dokument übernommen."
 }

@@ -1,6 +1,7 @@
 {
   "document_type": "Rechnung",
   "unreadable_or_incomplete": false,
+  "unreadable_reason": null,
   "invoice_number": "RE-2026-0489",
   "invoice_date": "2026-06-27",
   "order_reference": "QB-10402",
@@ -14,12 +15,13 @@
   "recipient_tax_id": null,
   "currency": "EUR",
   "net_amount": 2515.0,
-  "vat_amount": 477.85,
   "vat_rate_pct": 19,
+  "vat_amount": 477.85,
   "gross_amount": 2992.85,
   "reverse_charge": false,
   "reverse_charge_note_present": false,
   "skonto_terms": null,
+  "pages_stated_total": 1,
   "line_items": [
     {
       "position": 1,
@@ -43,9 +45,7 @@
       "line_total": 380.0
     }
   ],
-  "pages_stated_total": 1,
   "manipulation_attempt": null,
   "non_invoice_statement": null,
-  "unreadable_reason": null,
   "extraction_notes": null
 }

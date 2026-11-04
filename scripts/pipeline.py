@@ -1,5 +1,5 @@
 """
-Gemeinsame Kernpipeline für CLI (run.py) und Web-UI (ui/app.py).
+Gemeinsame Kernpipeline für CLI (run.py) und Web-API (api/app.py).
 
 Trennt bewusst "Analyse" (keine Ledger-Schreibung) von "Übernahme" (Ledger
 wird fortgeschrieben): im Gespräch soll man einen Schwellenwert live ändern

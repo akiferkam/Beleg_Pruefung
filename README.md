@@ -19,39 +19,45 @@ gleiche Regeln, gleiches Ergebnis, nur die Bedienung unterscheidet sich.
 
 ### 1. Web-Oberfläche — der Weg für die Buchhaltung im Alltag
 
+Zwei Prozesse parallel: die Python-API (`api/app.py`, Pflicht) und das
+React-Frontend (`web/`, optional - ohne das läuft es nur per CLI/Skill).
+
 ```
-python ui/app.py
-# dann im Browser: http://127.0.0.1:5050
+python api/app.py                          # API auf http://127.0.0.1:5050
+
+cd web && npm install --legacy-peer-deps    # einmalig
+cp .env.example .env                        # VITE_BELEG_API_URL=http://127.0.0.1:5050
+npm run dev                                 # UI auf http://localhost:8080
 ```
 
-Ordner wählen (oder Dateien per Klick hochladen, dann als kleine Vorschaubilder
-unter "Gerade hochgeladen" sichtbar) → **Analysieren** sortiert die Belege in
-zwei Bereiche: **"Zu prüfen"** (eine Karte pro Beleg mit Vorschaubild, Betrag,
-Lieferant und den konkreten Gründen) und **"Freigegeben / entschieden"** (kompakte
-Liste). Das ist eine **Vorschau und verändert nichts** - beliebig oft
-wiederholbar, auch nach einer Policy-Änderung (Toleranz, Freigabegrenze,
-"Bestellbezug Pflicht" - alle drei direkt im Browser editierbar, vorausgefüllt
-aus `config.yaml`). Eine Policy-Änderung braucht keinen neuen Vision-Aufruf
-(Extraktion ist dateiinhaltsbasiert gecacht) - das Ergebnis erscheint sofort.
-Erst **"In Ledger übernehmen"** schreibt wirklich fort (wie ein echter Lauf)
-und aktualisiert `results/ergebnis.csv`/`.md`. Das ist der Knopf für die
-Live-Änderung im Gespräch: Toleranz von 10 % auf 9 % senken und neu auswerten
-lässt z.B. b01 sofort von der "Zu prüfen"-Liste in "Freigegeben" wandern.
+Das Frontend wurde als Design-Entwurf mit [Lovable](https://lovable.dev)
+erstellt und an die echte API angebunden - nicht nur eine Mock-Demo. Fünf
+Seiten, ein gemeinsamer Zustand (`web/src/lib/beleg-store.tsx`):
 
-**Ein hinschauen-Beleg ist kein Sackgasse.** Jede Karte hat einen Link
-**"Beleg öffnen ↗"**, der das Original (PDF/Bild) in einem neuen Tab zeigt, so
-wie es im Postfach ankam, direkt neben der Begründung und einem Notizfeld. Nach
-dem Ansehen klickt die Buchhaltung **"Freigeben"** oder **"Hinschauen
-bestätigen"** - die Karte verschwindet sofort aus der Warteschlange und taucht
-unten bei "Freigegeben / entschieden" wieder auf (keine lange Tabelle zum
-Durchscrollen, sondern eine Liste, die kleiner wird, während man sie abarbeitet).
-Automatische und manuelle Entscheidung bleiben beide sichtbar (nichts wird
-überschrieben) und landen in `results/overrides.json` sowie - nach "In Ledger
-übernehmen" - in `ergebnis.csv`/`.md` mit eigener Spalte (`quelle`:
-automatisch/manuell). Genau das soll die Buchhaltung entlasten: nicht "das
-System entscheidet allein", sondern "das System filtert vor, der Mensch
-arbeitet eine kurze, visuelle Warteschlange ab statt 16 Belege von Hand
-durchzugehen".
+- **Übersicht** — KPI-Kacheln, Befunde je Prüfbereich (A-F) als Balkendiagramm,
+  Entscheidungsverteilung als Donut, letzte Aktivitäten.
+- **Zu prüfen** — eine Karte pro offenem Beleg: Vorschaubild, Betrag, die
+  konkreten Blockierer, Link **"Beleg öffnen ↗"** zum Original, Notizfeld,
+  **Freigeben**/**Hinschauen bestätigen**. Die Karte verschwindet sofort aus
+  der Liste und taucht bei "Freigegeben" wieder auf (keine Tabelle zum
+  Durchscrollen, sondern eine Warteschlange, die kleiner wird).
+- **Belegdetail** (`/belege/$docId`) — alle extrahierten Felder (IBAN,
+  Steuernr., Positionen, USt-Aufschlüsselung), vollständiger Prüfkatalog A-F,
+  dieselbe Entscheidungs-Box.
+- **Freigegeben** — alle entschiedenen Belege, mit Quelle (automatisch/manuell).
+- **Belege hochladen**, **Prüfregeln** (Policy live ändern, triggert sofortige
+  Neuauswertung über den Extraktions-Cache, kein neuer Vision-Aufruf).
+
+Automatische und manuelle Entscheidung bleiben immer beide sichtbar (nichts
+wird überschrieben). Erst **"In Ledger übernehmen"** schreibt wirklich fort und
+aktualisiert `results/ergebnis.csv`/`.md` (mit eigener Spalte `quelle`). Das
+ist der Knopf für die Live-Änderung im Gespräch: Toleranz von 10 % auf 9 %
+senken auf der Prüfregeln-Seite lässt b01 sofort in die Warteschlange wandern.
+
+Ohne laufende API (`VITE_BELEG_API_URL` nicht gesetzt) fällt `web/` automatisch
+auf `src/lib/mock/sample-results.json` zurück (Ergebnis eines echten Laufs über
+die 16 Testbelege) - zum Durchklicken des Designs ohne API-Key. Details in
+[web/README.md](web/README.md).
 
 ### 2. Kommandozeile — für Automatisierung/Batch/CI
 
@@ -179,15 +185,17 @@ Alle vier Skripte liegen unter `eval/` und sind beliebig wiederholbar.
   war aber für die 16 Belege nicht nötig und hätte eine weitere, schwerer
   zu testende LLM-Entscheidungsstufe eingeführt.
 - **MCP-Server / n8n-Workflow:** der Kern ist bewusst CLI-first
-  (`python scripts/run.py <ordner>`) plus eine dünne Web-UI (`ui/app.py`)
-  und ein Claude Skill (`SKILL.md`) obendrauf - alle drei rufen denselben
-  `pipeline.py`-Kern auf. Ein MCP-Server (Tool `check_invoice`) oder ein
-  n8n-Execute-Command-Node wären dieselbe Art von dünnem Wrapper und ließen
-  sich genauso aufsetzen; aus Zeitgründen nicht gebaut.
-- **Authentifizierung/Mehrbenutzer für die Web-UI:** `ui/app.py` ist bewusst
-  ein lokales Ein-Personen-Tool (kein Login, bindet nur an 127.0.0.1) - für
-  den Produktivbetrieb bräuchte es echte Zugriffskontrolle, siehe Punkt
-  "Berechtigungen" bei einer etwaigen Produktivisierung.
+  (`python scripts/run.py <ordner>`) plus eine JSON-API (`api/app.py`) mit
+  React-Frontend (`web/`) und ein Claude Skill (`SKILL.md`) obendrauf - alle
+  drei rufen denselben `pipeline.py`-Kern auf. Ein MCP-Server (Tool
+  `check_invoice`) oder ein n8n-Execute-Command-Node wären dieselbe Art von
+  dünnem Wrapper und ließen sich genauso aufsetzen; aus Zeitgründen nicht gebaut.
+- **Authentifizierung/Mehrbenutzer für die Web-Oberfläche:** `api/app.py` ist
+  bewusst ein lokales Ein-Personen-Tool (kein Login, bindet nur an 127.0.0.1,
+  CORS nur für `/api/*` und nur für localhost) - für den Produktivbetrieb
+  bräuchte es echte Zugriffskontrolle, siehe Punkt "Berechtigungen" bei einer
+  etwaigen Produktivisierung. Die mitgelieferte Supabase-Anbindung in `web/`
+  (von Lovable generiert) ist aktuell ungenutzt, nicht aktiviert.
 - **Multi-Agent-Aufbau, RAG/Vektordatenbank, Fine-Tuning:** keine davon löst
   hier ein echtes Problem - es gibt keine zu durchsuchende Wissensbasis, und
   ein einzelner strukturierter Extraktionsaufruf pro Beleg ist zuverlässiger

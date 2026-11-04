@@ -41,10 +41,10 @@ Ergebnis:
   pro Bestellung, bekannte IBANs pro Lieferant). Wächst mit jedem Lauf weiter; für
   einen komplett frischen Testlauf vorher löschen.
 
-Alternativ: `python ui/app.py` startet eine kleine Weboberfläche
-(`http://127.0.0.1:5050`) zum Hochladen/Analysieren mit sofort sichtbarer,
-klickbarer Begründung pro Beleg und live editierbaren Policy-Werten - siehe
-README.md, Abschnitt "Drei Wege, den Skill zu benutzen".
+Alternativ: `python api/app.py` (API) + `cd web && npm run dev` (React-UI,
+`http://localhost:8080`) für Hochladen/Analysieren mit Dashboard, Warteschlange,
+Belegdetails und live editierbaren Policy-Werten - siehe README.md, Abschnitt
+"Drei Wege, den Skill zu benutzen".
 
 ## Live-Änderungen (für das Gespräch)
 
@@ -71,5 +71,6 @@ festes JSON-Schema) → `normalize.py` (Grounding gegen Halluzination) →
 `checks/` (reine Python-Regeln, Katalog A-F) → `decide.py` (freigeben/hinschauen)
 → `report.py` (Ausgabe). `ledger.py` hält das laufübergreifende Gedächtnis für
 Duplikats- und Mengenprüfungen. `pipeline.py` bündelt diese Schritte zu einem
-wiederverwendbaren Kern, den `scripts/run.py` (CLI) und `ui/app.py` (Web-UI)
-beide aufrufen - gleiche Regeln, egal welchen der drei Wege man nutzt.
+wiederverwendbaren Kern, den `scripts/run.py` (CLI) und `api/app.py` (JSON-API
+für `web/`, das React-Frontend) beide aufrufen - gleiche Regeln, egal welchen
+der drei Wege man nutzt.

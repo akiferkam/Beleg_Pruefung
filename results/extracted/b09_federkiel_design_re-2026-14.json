@@ -5,6 +5,10 @@
   "invoice_number": "2026-14",
   "invoice_date": "2026-06-05",
   "currency": "EUR",
+  "net_amount": 2760.0,
+  "vat_amount": 524.4,
+  "vat_rate_pct": 19,
+  "gross_amount": 3284.4,
   "supplier_name": "Federkiel Design Studio · Lena Vogt",
   "supplier_address": "Augsburg",
   "supplier_tax_id": null,
@@ -14,6 +18,12 @@
   "recipient_address": "Getränkemanufaktur, Limonadenweg 3, 94032 Passau",
   "recipient_tax_id": null,
   "order_reference": null,
+  "skonto_terms": null,
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "pages_stated_total": 1,
+  "manipulation_attempt": null,
+  "non_invoice_statement": null,
   "line_items": [
     {
       "position": 1,
@@ -30,15 +40,5 @@
       "line_total": 360.0
     }
   ],
-  "net_amount": 2760.0,
-  "vat_rate_pct": 19,
-  "vat_amount": 524.4,
-  "gross_amount": 3284.4,
-  "skonto_terms": null,
-  "reverse_charge": false,
-  "reverse_charge_note_present": false,
-  "pages_stated_total": 1,
-  "manipulation_attempt": null,
-  "non_invoice_statement": null,
   "extraction_notes": null
 }

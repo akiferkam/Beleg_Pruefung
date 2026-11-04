@@ -1,0 +1,2571 @@
+[
+ {
+  "docId": "b01_etikett_soehne_re-4471",
+  "fileName": "b01_etikett_soehne_re-4471.pdf",
+  "autoDecision": "freigeben",
+  "documentType": "Rechnung",
+  "supplier": "Etikett & Söhne GmbH",
+  "supplierAddress": "Nürnberg",
+  "supplierTaxId": "DE 216 445 118",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-4471",
+  "invoiceDate": "2026-05-18",
+  "orderReference": "QB-10387",
+  "currency": "EUR",
+  "netAmount": 3230.0,
+  "vatRatePct": 19,
+  "vatAmount": 613.7,
+  "grossAmount": 3843.7,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Rollen-Etikett Klassik Zuckerfrei Apfel 0,5l",
+    "quantity": 80000,
+    "unitPrice": 0.02,
+    "lineTotal": 1680.0
+   },
+   {
+    "description": "Rollen-Etikett Klassik Zuckerfrei Zitrone 0,5l",
+    "quantity": 60000,
+    "unitPrice": 0.02,
+    "lineTotal": 1260.0
+   },
+   {
+    "description": "Druckvorlagen-Setup einmalig",
+    "quantity": 2,
+    "unitPrice": 145.0,
+    "lineTotal": 290.0
+   }
+  ],
+  "blockingReasons": [],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (8) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Etikett & Söhne GmbH, Nürnberg."
+   },
+   {
+    "id": "B3",
+    "message": "USt-IdNr des Lieferanten vorhanden: DE 216 445 118."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-4471, Datum 2026-05-18 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (3 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (3230.00 €) stimmt mit Nettobetrag (3230.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 3230.00 € × 19% = 613.70 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 3230.00 € + 613.70 € = 3843.70 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D1",
+    "message": "Bestellnummer im Beleg angegeben: QB-10387."
+   },
+   {
+    "id": "D2",
+    "message": "Bestellnummer QB-10387 in bestellungen.csv gefunden (Etikett & Söhne GmbH, Rollen-Etikett Klassik Zuckerfrei)."
+   },
+   {
+    "id": "D3",
+    "message": "Lieferant passt zur Bestellung (100% Ähnlichkeit)."
+   },
+   {
+    "id": "D4",
+    "message": "Einzelpreis(e) stimmen mit Bestellpreis 0.021 € überein."
+   },
+   {
+    "id": "D5",
+    "message": "Kumulativ in Rechnung gestellte Menge (140000) liegt innerhalb der bestellten Menge (140000)."
+   },
+   {
+    "id": "D6",
+    "message": "Zusätzliche, nicht bestellte Positionen: 'Druckvorlagen-Setup einmalig' (290.00 €) - zusammen 290.00 € (9.9% des Bestellwerts 2940.00 €). Innerhalb der Toleranz von 10.0%."
+   },
+   {
+    "id": "D7",
+    "message": "Keine Rahmenbestellung."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 3843.70 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b02_glashuette_weiden_re-2026-559",
+  "fileName": "b02_glashuette_weiden_re-2026-559.pdf",
+  "autoDecision": "freigeben",
+  "documentType": "Rechnung",
+  "supplier": "Glashütte Weiden GmbH",
+  "supplierAddress": "Weiden i.d.OPf.",
+  "supplierTaxId": "DE 133 902 551",
+  "iban": "DE12500105170648489890",
+  "invoiceNumber": "RE-2026-559",
+  "invoiceDate": "2026-05-22",
+  "orderReference": "QB-10391",
+  "currency": "EUR",
+  "netAmount": 21206.4,
+  "vatRatePct": 19,
+  "vatAmount": 4029.22,
+  "grossAmount": 25235.62,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Longneck-Flasche 0,33l klar, Palette",
+    "quantity": 96,
+    "unitPrice": 212.5,
+    "lineTotal": 20400.0
+   },
+   {
+    "description": "Kronkork-kompatibel Muendung, Aufpreis",
+    "quantity": 96,
+    "unitPrice": 8.4,
+    "lineTotal": 806.4
+   }
+  ],
+  "blockingReasons": [],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (7) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Glashütte Weiden GmbH, Weiden i.d.OPf.."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 133 902 551."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-2026-559, Datum 2026-05-22 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (2 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (21206.40 €) stimmt mit Nettobetrag (21206.40 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 21206.40 € × 19% = 4029.22 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 21206.40 € + 4029.22 € = 25235.62 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D1",
+    "message": "Bestellnummer im Beleg angegeben: QB-10391."
+   },
+   {
+    "id": "D2",
+    "message": "Bestellnummer QB-10391 in bestellungen.csv gefunden (Glashütte Weiden GmbH, Longneck-Flasche 0,33l klar (Palette))."
+   },
+   {
+    "id": "D3",
+    "message": "Lieferant passt zur Bestellung (100% Ähnlichkeit)."
+   },
+   {
+    "id": "D4",
+    "message": "Einzelpreis(e) stimmen mit Bestellpreis 212.5 € überein."
+   },
+   {
+    "id": "D5",
+    "message": "Kumulativ in Rechnung gestellte Menge (96) liegt innerhalb der bestellten Menge (96)."
+   },
+   {
+    "id": "D6",
+    "message": "Zusätzliche, nicht bestellte Positionen: 'Kronkork-kompatibel Muendung, Aufpreis' (806.40 €) - zusammen 806.40 € (4.0% des Bestellwerts 20400.00 €). Innerhalb der Toleranz von 10.0%."
+   },
+   {
+    "id": "D7",
+    "message": "Keine Rahmenbestellung."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE12500105170648489890."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 25235.62 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b03_sued_zucker_re-8841",
+  "fileName": "b03_sued_zucker_re-8841.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Süddeutsche Zucker-Handels GmbH",
+  "supplierAddress": "Ochsenfurt",
+  "supplierTaxId": "DE 189 447 203",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-8841",
+  "invoiceDate": "2026-06-24",
+  "orderReference": "QB-10412",
+  "currency": "EUR",
+  "netAmount": 8371.98,
+  "vatRatePct": 7,
+  "vatAmount": 586.04,
+  "grossAmount": 8958.02,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Bio-Rohrzucker 25kg Sack",
+    "quantity": 48,
+    "unitPrice": 41.17,
+    "lineTotal": 1976.16
+   },
+   {
+    "description": "Bio-Rohrzucker 10kg Sack",
+    "quantity": 30,
+    "unitPrice": 17.83,
+    "lineTotal": 534.9
+   },
+   {
+    "description": "Rohrohrzucker fein 25kg",
+    "quantity": 22,
+    "unitPrice": 39.94,
+    "lineTotal": 878.68
+   },
+   {
+    "description": "Puderzucker Bio 5kg",
+    "quantity": 18,
+    "unitPrice": 9.61,
+    "lineTotal": 172.98
+   },
+   {
+    "description": "Invertzuckersirup 20kg Kanister",
+    "quantity": 12,
+    "unitPrice": 33.28,
+    "lineTotal": 399.36
+   },
+   {
+    "description": "Traubenzucker 10kg",
+    "quantity": 9,
+    "unitPrice": 14.77,
+    "lineTotal": 132.93
+   },
+   {
+    "description": "Karamellsirup 5l",
+    "quantity": 14,
+    "unitPrice": 22.19,
+    "lineTotal": 310.66
+   },
+   {
+    "description": "Bio-Rohrzucker 25kg Sack (Charge B)",
+    "quantity": 16,
+    "unitPrice": 41.03,
+    "lineTotal": 656.48
+   },
+   {
+    "description": "Melasse 20kg Eimer",
+    "quantity": 7,
+    "unitPrice": 28.55,
+    "lineTotal": 199.85
+   },
+   {
+    "description": "Fruktose kristallin 10kg",
+    "quantity": 11,
+    "unitPrice": 19.66,
+    "lineTotal": 216.26
+   },
+   {
+    "description": "Zuckercouleur E150a 5l",
+    "quantity": 6,
+    "unitPrice": 41.9,
+    "lineTotal": 251.4
+   },
+   {
+    "description": "Bio-Puderzucker 10kg",
+    "quantity": 8,
+    "unitPrice": 18.42,
+    "lineTotal": 147.36
+   },
+   {
+    "description": "Dextrose Monohydrat 25kg",
+    "quantity": 5,
+    "unitPrice": 37.11,
+    "lineTotal": 185.55
+   },
+   {
+    "description": "Sirup-Grundstock neutral 20l",
+    "quantity": 10,
+    "unitPrice": 24.88,
+    "lineTotal": 248.8
+   },
+   {
+    "description": "Bio-Rohrzucker 1kg Beutel VE12",
+    "quantity": 20,
+    "unitPrice": 21.14,
+    "lineTotal": 422.8
+   },
+   {
+    "description": "Kandiszucker braun 5kg",
+    "quantity": 13,
+    "unitPrice": 12.73,
+    "lineTotal": 165.49
+   },
+   {
+    "description": "Zuckerersatz Erythrit 10kg",
+    "quantity": 4,
+    "unitPrice": 58.29,
+    "lineTotal": 233.16
+   },
+   {
+    "description": "Bio-Vollrohrzucker 25kg",
+    "quantity": 9,
+    "unitPrice": 43.61,
+    "lineTotal": 392.49
+   },
+   {
+    "description": "Glukosesirup DE38 25kg",
+    "quantity": 6,
+    "unitPrice": 31.47,
+    "lineTotal": 188.82
+   },
+   {
+    "description": "Ahornsirup Grade A 5l",
+    "quantity": 3,
+    "unitPrice": 62.08,
+    "lineTotal": 186.24
+   },
+   {
+    "description": "Reissirup Bio 20kg",
+    "quantity": 5,
+    "unitPrice": 44.9,
+    "lineTotal": 224.5
+   },
+   {
+    "description": "Agavendicksaft 10kg",
+    "quantity": 7,
+    "unitPrice": 33.52,
+    "lineTotal": 234.64
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (8359.51 €) weicht vom ausgewiesenen Nettobetrag (8371.98 €) ab: Differenz 12.47 €."
+   },
+   {
+    "id": "D6",
+    "message": "Zusätzliche nicht bestellte Positionen im Wert von 3012.17 € bei einem Rahmenvertrag ohne Referenzwert - manuell prüfen."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (2/2)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (36) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Süddeutsche Zucker-Handels GmbH, Ochsenfurt."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 189 447 203."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-8841, Datum 2026-06-24 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (22 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 7% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 8371.98 € × 7% = 586.04 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 8371.98 € + 586.04 € = 8958.02 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D1",
+    "message": "Bestellnummer im Beleg angegeben: QB-10412."
+   },
+   {
+    "id": "D2",
+    "message": "Bestellnummer QB-10412 in bestellungen.csv gefunden (Süddeutsche Zucker-Handels GmbH, Bio-Rohrzucker Sammelbestellung)."
+   },
+   {
+    "id": "D3",
+    "message": "Lieferant passt zur Bestellung (100% Ähnlichkeit)."
+   },
+   {
+    "id": "D4",
+    "message": "Rahmenvertrag ohne festen Stückpreis - Prüfung entfällt (siehe D7)."
+   },
+   {
+    "id": "D5",
+    "message": "Rahmenvertrag ohne feste Menge - Prüfung entfällt (siehe D7)."
+   },
+   {
+    "id": "D7",
+    "message": "Bestellung QB-10412 ist ein Rahmenvertrag (Einzelpreis 0) - es wird nur der Lieferantenabgleich geprüft, kein Stückpreis-/Mengenvergleich."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 8958.02 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b04_kraeuterhof_allgaeu_re-2026-0331",
+  "fileName": "b04_kraeuterhof_allgaeu_re-2026-0331.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Kräuterhof Allgäu eG",
+  "supplierAddress": "Kempten",
+  "supplierTaxId": "DE 205 118 662",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-2026-0331",
+  "invoiceDate": "2026-06-11",
+  "orderReference": null,
+  "currency": "EUR",
+  "netAmount": 4294.8,
+  "vatRatePct": 7,
+  "vatAmount": 296.43,
+  "grossAmount": 4591.23,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Melissenextrakt Bio 5l Kanister",
+    "quantity": 24,
+    "unitPrice": 88.5,
+    "lineTotal": 2124.0
+   },
+   {
+    "description": "Zitronenmelisse-Aroma natürlich 1l",
+    "quantity": 40,
+    "unitPrice": 31.2,
+    "lineTotal": 1248.0
+   },
+   {
+    "description": "Kräuterauszug Salbei-Thymian 5l",
+    "quantity": 12,
+    "unitPrice": 76.9,
+    "lineTotal": 922.8
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "C4",
+    "message": "USt-Betrag stimmt nicht: 4294.80 € × 7% = 300.64 €, Rechnung sagt 296.43 € (Differenz 4.21 €)."
+   },
+   {
+    "id": "D1",
+    "message": "Keine Bestellnummer im Beleg - ohne Bestellbezug kann nicht geprüft werden, ob Ware/Leistung je bestellt wurde."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (9) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Kräuterhof Allgäu eG, Kempten."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 205 118 662."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-2026-0331, Datum 2026-06-11 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (3 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (4294.80 €) stimmt mit Nettobetrag (4294.80 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 7% ist gültig."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 4294.80 € + 296.43 € = 4591.23 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D2",
+    "message": "Keine Bestellnummer angegeben - Prüfung entfällt (siehe D1)."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 4591.23 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b05_brenner_logistik_re-fr-11029",
+  "fileName": "b05_brenner_logistik_re-fr-11029.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Brenner Logistik GmbH",
+  "supplierAddress": "Regensburg",
+  "supplierTaxId": "DE 177 330 914",
+  "iban": "DE89370400940532013000",
+  "invoiceNumber": "FR-11029",
+  "invoiceDate": "2026-06-28",
+  "orderReference": null,
+  "currency": "EUR",
+  "netAmount": 1490.0,
+  "vatRatePct": 19,
+  "vatAmount": 283.1,
+  "grossAmount": 1773.1,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Palettenversand Edeka Südbayern (ZL), 18 Paletten",
+    "quantity": 18,
+    "unitPrice": 64.5,
+    "lineTotal": 1161.0
+   },
+   {
+    "description": "Mautpauschale",
+    "quantity": 1,
+    "unitPrice": 212.0,
+    "lineTotal": 212.0
+   },
+   {
+    "description": "Ladungssicherung",
+    "quantity": 18,
+    "unitPrice": 6.5,
+    "lineTotal": 117.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "D1",
+    "message": "Keine Bestellnummer im Beleg - ohne Bestellbezug kann nicht geprüft werden, ob Ware/Leistung je bestellt wurde."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme ungültig: DE89370400940532013000."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (8) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Brenner Logistik GmbH, Regensburg."
+   },
+   {
+    "id": "B3",
+    "message": "USt-IdNr des Lieferanten vorhanden: DE 177 330 914."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer FR-11029, Datum 2026-06-28 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (3 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (1490.00 €) stimmt mit Nettobetrag (1490.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 1490.00 € × 19% = 283.10 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 1490.00 € + 283.10 € = 1773.10 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D2",
+    "message": "Keine Bestellnummer angegeben - Prüfung entfällt (siehe D1)."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 1773.10 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b06_kolb_re-2026-0447",
+  "fileName": "b06_kolb_re-2026-0447.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Maschinenservice Kolb",
+  "supplierAddress": "Landshut",
+  "supplierTaxId": "DE 198 220 471",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-2026-0447",
+  "invoiceDate": "2026-06-15",
+  "orderReference": "QB-10402",
+  "currency": "EUR",
+  "netAmount": 2515.0,
+  "vatRatePct": 19,
+  "vatAmount": 477.85,
+  "grossAmount": 2992.85,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Wartung Abfüllanlage AF-3, Jahresinspektion",
+    "quantity": 1,
+    "unitPrice": 1850.0,
+    "lineTotal": 1850.0
+   },
+   {
+    "description": "Ersatz Dichtungssatz Füllventil",
+    "quantity": 6,
+    "unitPrice": 47.5,
+    "lineTotal": 285.0
+   },
+   {
+    "description": "Anfahrt/Techniker 4h",
+    "quantity": 4,
+    "unitPrice": 95.0,
+    "lineTotal": 380.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "D6",
+    "message": "Zusätzliche, nicht bestellte Positionen: 'Ersatz Dichtungssatz Füllventil' (285.00 €), 'Anfahrt/Techniker 4h' (380.00 €) - zusammen 665.00 € (35.9% des Bestellwerts 1850.00 €). Über der Toleranz von 10.0%."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (6) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Maschinenservice Kolb, Landshut."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 198 220 471."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-2026-0447, Datum 2026-06-15 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (3 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (2515.00 €) stimmt mit Nettobetrag (2515.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 2515.00 € × 19% = 477.85 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 2515.00 € + 477.85 € = 2992.85 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D1",
+    "message": "Bestellnummer im Beleg angegeben: QB-10402."
+   },
+   {
+    "id": "D2",
+    "message": "Bestellnummer QB-10402 in bestellungen.csv gefunden (Maschinenservice Kolb, Jahreswartung Abfüllanlage AF-3)."
+   },
+   {
+    "id": "D3",
+    "message": "Lieferant passt zur Bestellung (100% Ähnlichkeit)."
+   },
+   {
+    "id": "D4",
+    "message": "Einzelpreis(e) stimmen mit Bestellpreis 1850.0 € überein."
+   },
+   {
+    "id": "D5",
+    "message": "Kumulativ in Rechnung gestellte Menge (1) liegt innerhalb der bestellten Menge (1)."
+   },
+   {
+    "id": "D7",
+    "message": "Keine Rahmenbestellung."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 2992.85 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b07_kronkorken_mueller_re-5567",
+  "fileName": "b07_kronkorken_mueller_re-5567.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Kronkorken Müller KG",
+  "supplierAddress": "Fürth",
+  "supplierTaxId": "DE 144 887 320",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-5567",
+  "invoiceDate": "2026-06-19",
+  "orderReference": "QB-10405",
+  "currency": "EUR",
+  "netAmount": 4550.0,
+  "vatRatePct": 19,
+  "vatAmount": 864.5,
+  "grossAmount": 5414.5,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Kronkorken gold, bedruckt Quellberg, 250.000 Stk",
+    "quantity": 250000,
+    "unitPrice": 0.02,
+    "lineTotal": 4550.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "D5",
+    "message": "Kumulativ in Rechnung gestellte Menge (250000) übersteigt bestellte Menge (200000) um 50000 Einheiten (≈ 910.00 € zu viel)."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (5) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Kronkorken Müller KG, Fürth."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 144 887 320."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-5567, Datum 2026-06-19 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (1 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (4550.00 €) stimmt mit Nettobetrag (4550.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 4550.00 € × 19% = 864.50 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 4550.00 € + 864.50 € = 5414.50 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D1",
+    "message": "Bestellnummer im Beleg angegeben: QB-10405."
+   },
+   {
+    "id": "D2",
+    "message": "Bestellnummer QB-10405 in bestellungen.csv gefunden (Kronkorken Müller KG, Kronkorken gold bedruckt)."
+   },
+   {
+    "id": "D3",
+    "message": "Lieferant passt zur Bestellung (100% Ähnlichkeit)."
+   },
+   {
+    "id": "D4",
+    "message": "Einzelpreis(e) stimmen mit Bestellpreis 0.0182 € überein."
+   },
+   {
+    "id": "D6",
+    "message": "Keine zusätzlichen, nicht bestellten Positionen."
+   },
+   {
+    "id": "D7",
+    "message": "Keine Rahmenbestellung."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 5414.50 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b08_getraenke_ostbayern_re-2026-771",
+  "fileName": "b08_getraenke_ostbayern_re-2026-771.jpg",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Getränkefachgroßhandel Ostbayern",
+  "supplierAddress": "Passau",
+  "supplierTaxId": "DE 211 556 043",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-2026-771",
+  "invoiceDate": "2026-06-21",
+  "orderReference": null,
+  "currency": "EUR",
+  "netAmount": 1074.0,
+  "vatRatePct": 19,
+  "vatAmount": 204.06,
+  "grossAmount": 1278.06,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Leergut-Kiste 24x0,33l, Rücknahme-Ausgleich",
+    "quantity": 120,
+    "unitPrice": 4.5,
+    "lineTotal": 540.0
+   },
+   {
+    "description": "Getränkekiste Kunststoff neu",
+    "quantity": 60,
+    "unitPrice": 8.9,
+    "lineTotal": 534.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "D1",
+    "message": "Keine Bestellnummer im Beleg - ohne Bestellbezug kann nicht geprüft werden, ob Ware/Leistung je bestellt wurde."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Grounding übersprungen: Keine digitale Textschicht (Foto/Scan ohne Textschicht)."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Getränkefachgroßhandel Ostbayern, Passau."
+   },
+   {
+    "id": "B3",
+    "message": "USt-IdNr des Lieferanten vorhanden: DE 211 556 043."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-2026-771, Datum 2026-06-21 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (2 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (1074.00 €) stimmt mit Nettobetrag (1074.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 1074.00 € × 19% = 204.06 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 1074.00 € + 204.06 € = 1278.06 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D2",
+    "message": "Keine Bestellnummer angegeben - Prüfung entfällt (siehe D1)."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 1278.06 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b09_federkiel_design_re-2026-14",
+  "fileName": "b09_federkiel_design_re-2026-14.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Federkiel Design Studio · Lena Vogt",
+  "supplierAddress": "Augsburg",
+  "supplierTaxId": null,
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "2026-14",
+  "invoiceDate": "2026-06-05",
+  "orderReference": null,
+  "currency": "EUR",
+  "netAmount": 2760.0,
+  "vatRatePct": 19,
+  "vatAmount": 524.4,
+  "grossAmount": 3284.4,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Etiketten-Redesign WACH Mate, Konzept + Reinzeichnung",
+    "quantity": 1,
+    "unitPrice": 2400.0,
+    "lineTotal": 2400.0
+   },
+   {
+    "description": "Korrekturschleife (2 Runden)",
+    "quantity": 2,
+    "unitPrice": 180.0,
+    "lineTotal": 360.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "B3",
+    "message": "Keine Steuernummer/USt-IdNr des Lieferanten angegeben (§14 Abs. 4 Nr. 2 UStG Pflichtangabe)."
+   },
+   {
+    "id": "D1",
+    "message": "Keine Bestellnummer im Beleg - ohne Bestellbezug kann nicht geprüft werden, ob Ware/Leistung je bestellt wurde."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (5) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Federkiel Design Studio · Lena Vogt, Augsburg."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer 2026-14, Datum 2026-06-05 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (2 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (2760.00 €) stimmt mit Nettobetrag (2760.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 2760.00 € × 19% = 524.40 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 2760.00 € + 524.40 € = 3284.40 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D2",
+    "message": "Keine Bestellnummer angegeben - Prüfung entfällt (siehe D1)."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 3284.40 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b10_kolb_re-2026-0489",
+  "fileName": "b10_kolb_re-2026-0489.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Maschinenservice Kolb",
+  "supplierAddress": "Landshut",
+  "supplierTaxId": "DE 198 220 471",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-2026-0489",
+  "invoiceDate": "2026-06-27",
+  "orderReference": "QB-10402",
+  "currency": "EUR",
+  "netAmount": 2515.0,
+  "vatRatePct": 19,
+  "vatAmount": 477.85,
+  "grossAmount": 2992.85,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Jahresinspektion Abfüllanlage AF-3",
+    "quantity": 1,
+    "unitPrice": 1850.0,
+    "lineTotal": 1850.0
+   },
+   {
+    "description": "Dichtungssatz Füllventil (6 Stk)",
+    "quantity": 6,
+    "unitPrice": 47.5,
+    "lineTotal": 285.0
+   },
+   {
+    "description": "Technikereinsatz Anfahrt 4h",
+    "quantity": 4,
+    "unitPrice": 95.0,
+    "lineTotal": 380.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "D5",
+    "message": "Kumulativ in Rechnung gestellte Menge (2 (davon 1 bereits aus früheren Rechnungen zu dieser Bestellung)) übersteigt bestellte Menge (1) um 1 Einheiten (≈ 1850.00 € zu viel)."
+   },
+   {
+    "id": "D6",
+    "message": "Zusätzliche, nicht bestellte Positionen: 'Dichtungssatz Füllventil (6 Stk)' (285.00 €), 'Technikereinsatz Anfahrt 4h' (380.00 €) - zusammen 665.00 € (35.9% des Bestellwerts 1850.00 €). Über der Toleranz von 10.0%."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (6) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Maschinenservice Kolb, Landshut."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 198 220 471."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-2026-0489, Datum 2026-06-27 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (3 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (2515.00 €) stimmt mit Nettobetrag (2515.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 2515.00 € × 19% = 477.85 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 2515.00 € + 477.85 € = 2992.85 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D1",
+    "message": "Bestellnummer im Beleg angegeben: QB-10402."
+   },
+   {
+    "id": "D2",
+    "message": "Bestellnummer QB-10402 in bestellungen.csv gefunden (Maschinenservice Kolb, Jahreswartung Abfüllanlage AF-3)."
+   },
+   {
+    "id": "D3",
+    "message": "Lieferant passt zur Bestellung (100% Ähnlichkeit)."
+   },
+   {
+    "id": "D4",
+    "message": "Einzelpreis(e) stimmen mit Bestellpreis 1850.0 € überein."
+   },
+   {
+    "id": "D7",
+    "message": "Keine Rahmenbestellung."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "IBAN stimmt mit bisheriger Historie dieses Lieferanten überein."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 2992.85 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b11_hopfen_etikett_re-3390",
+  "fileName": "b11_hopfen_etikett_re-3390.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Hopfen & Etikett Druck GmbH",
+  "supplierAddress": "Kelheim",
+  "supplierTaxId": "DE 166 909 214",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-3390",
+  "invoiceDate": "2026-06-23",
+  "orderReference": null,
+  "currency": "EUR",
+  "netAmount": 804.75,
+  "vatRatePct": 19,
+  "vatAmount": 152.9,
+  "grossAmount": 957.65,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Sixpack-Träger Apfelschorle, Kartonage",
+    "quantity": 5250,
+    "unitPrice": 0.14,
+    "lineTotal": 719.25
+   },
+   {
+    "description": "Sonderfarbe Grün, Aufschlag",
+    "quantity": 1,
+    "unitPrice": 85.5,
+    "lineTotal": 85.5
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "A5",
+    "message": "Mögliche Halluzination: folgende extrahierte Werte wurden im Rohtext/Textschicht NICHT wiedergefunden: gross_amount"
+   },
+   {
+    "id": "D1",
+    "message": "Keine Bestellnummer im Beleg - ohne Bestellbezug kann nicht geprüft werden, ob Ware/Leistung je bestellt wurde."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Hopfen & Etikett Druck GmbH, Kelheim."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 166 909 214."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-3390, Datum 2026-06-23 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (2 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (804.75 €) stimmt mit Nettobetrag (804.75 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 804.75 € × 19% = 152.90 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 804.75 € + 152.90 € = 957.65 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D2",
+    "message": "Keine Bestellnummer angegeben - Prüfung entfällt (siehe D1)."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 957.65 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b12_kartonagen_beck_ls-2210",
+  "fileName": "b12_kartonagen_beck_ls-2210.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Lieferschein",
+  "supplier": "Kartonagen Beck GmbH",
+  "supplierAddress": "Straubing",
+  "supplierTaxId": null,
+  "iban": null,
+  "invoiceNumber": "LS-2210",
+  "invoiceDate": "2026-06-20",
+  "orderReference": "QB-10398",
+  "currency": "EUR",
+  "netAmount": null,
+  "vatRatePct": null,
+  "vatAmount": null,
+  "grossAmount": null,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Umkarton 24x0,33l bedruckt",
+    "quantity": 1500,
+    "unitPrice": null,
+    "lineTotal": null
+   },
+   {
+    "description": "Zwischenlage Wellpappe",
+    "quantity": 1500,
+    "unitPrice": null,
+    "lineTotal": null
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "A3",
+    "message": "Beleg ist keine Rechnung, sondern: Lieferschein. Keine Zahlungsfreigabe ohne Rechnung möglich."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (2) im Rohtext wiedergefunden."
+   }
+  ]
+ },
+ {
+  "docId": "b13_nordic_caps_inv-2026-338",
+  "fileName": "b13_nordic_caps_inv-2026-338.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Nordic Bottle Caps ApS",
+  "supplierAddress": "Aarhus, Dänemark",
+  "supplierTaxId": "DK 38 55 21 09",
+  "iban": "DK5000400440116243",
+  "invoiceNumber": "INV-2026-338",
+  "invoiceDate": "2026-06-17",
+  "orderReference": null,
+  "currency": "EUR",
+  "netAmount": 1875.0,
+  "vatRatePct": 0,
+  "vatAmount": 0.0,
+  "grossAmount": 1875.0,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Specialty crown caps, matte black, 150,000 pcs",
+    "quantity": 150000,
+    "unitPrice": 0.01,
+    "lineTotal": 1875.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "D1",
+    "message": "Keine Bestellnummer im Beleg - ohne Bestellbezug kann nicht geprüft werden, ob Ware/Leistung je bestellt wurde."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (4) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Nordic Bottle Caps ApS, Aarhus, Dänemark."
+   },
+   {
+    "id": "B3",
+    "message": "USt-IdNr des Lieferanten vorhanden: DK 38 55 21 09."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer INV-2026-338, Datum 2026-06-17 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Reverse-Charge-Fall formal korrekt (§13b), Empfänger-USt-IdNr DE 811 907 980."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (1 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (1875.00 €) stimmt mit Nettobetrag (1875.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 0% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 1875.00 € × 0% = 0.00 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 1875.00 € + 0.00 € = 1875.00 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D2",
+    "message": "Keine Bestellnummer angegeben - Prüfung entfällt (siehe D1)."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DK5000400440116243."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 1875.00 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b14_fruchtkontor_bodensee_re-2026-902",
+  "fileName": "b14_fruchtkontor_bodensee_re-2026-902.pdf",
+  "autoDecision": "freigeben",
+  "documentType": "Rechnung",
+  "supplier": "Fruchtkontor Bodensee GmbH",
+  "supplierAddress": "Friedrichshafen",
+  "supplierTaxId": "DE 202 774 118",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-2026-902",
+  "invoiceDate": "2026-06-26",
+  "orderReference": "QB-10416",
+  "currency": "EUR",
+  "netAmount": 10110.0,
+  "vatRatePct": 7,
+  "vatAmount": 707.7,
+  "grossAmount": 10817.7,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Apfelsaftkonzentrat 70 Brix, 1000l IBC",
+    "quantity": 8,
+    "unitPrice": 1240.0,
+    "lineTotal": 9920.0
+   },
+   {
+    "description": "Ascorbinsäure-Zusatz (Antioxidans)",
+    "quantity": 8,
+    "unitPrice": 23.75,
+    "lineTotal": 190.0
+   }
+  ],
+  "blockingReasons": [],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (5) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Getränkemanufaktur, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Fruchtkontor Bodensee GmbH, Friedrichshafen."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 202 774 118."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-2026-902, Datum 2026-06-26 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (2 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (10110.00 €) stimmt mit Nettobetrag (10110.00 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 7% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 10110.00 € × 7% = 707.70 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 10110.00 € + 707.70 € = 10817.70 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D1",
+    "message": "Bestellnummer im Beleg angegeben: QB-10416."
+   },
+   {
+    "id": "D2",
+    "message": "Bestellnummer QB-10416 in bestellungen.csv gefunden (Fruchtkontor Bodensee GmbH, Apfelsaftkonzentrat 70 Brix IBC)."
+   },
+   {
+    "id": "D3",
+    "message": "Lieferant passt zur Bestellung (100% Ähnlichkeit)."
+   },
+   {
+    "id": "D4",
+    "message": "Einzelpreis(e) stimmen mit Bestellpreis 1240.0 € überein."
+   },
+   {
+    "id": "D5",
+    "message": "Kumulativ in Rechnung gestellte Menge (8) liegt innerhalb der bestellten Menge (8)."
+   },
+   {
+    "id": "D6",
+    "message": "Zusätzliche, nicht bestellte Positionen: 'Ascorbinsäure-Zusatz (Antioxidans)' (190.00 €) - zusammen 190.00 € (1.9% des Bestellwerts 9920.00 €). Innerhalb der Toleranz von 10.0%."
+   },
+   {
+    "id": "D7",
+    "message": "Keine Rahmenbestellung."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 10817.70 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Kein Skonto-Hinweis im Beleg."
+   }
+  ]
+ },
+ {
+  "docId": "b15_tankreinigung_sued_an-2026-118",
+  "fileName": "b15_tankreinigung_sued_an-2026-118.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Angebot",
+  "supplier": "Tankreinigung Süddeutschland GmbH",
+  "supplierAddress": "Ingolstadt",
+  "supplierTaxId": "DE 187 220 903",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "AN-2026-118",
+  "invoiceDate": "2026-06-30",
+  "orderReference": "QB-10421",
+  "currency": "EUR",
+  "netAmount": 4000.0,
+  "vatRatePct": 19,
+  "vatAmount": 760.0,
+  "grossAmount": 4760.0,
+  "skonto": null,
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "CIP-Reinigung Lagertanks 5x, Komplettpaket",
+    "quantity": 5,
+    "unitPrice": 680.0,
+    "lineTotal": 3400.0
+   },
+   {
+    "description": "Desinfektion & Protokoll",
+    "quantity": 5,
+    "unitPrice": 120.0,
+    "lineTotal": 600.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "A3",
+    "message": "Beleg ist keine Rechnung, sondern: Angebot. Im Dokument: „Dieses Angebot ist freibleibend und 30 Tage gültig. Es handelt sich nicht um eine Rechnung.“. Keine Zahlungsfreigabe ohne Rechnung möglich."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (5) im Rohtext wiedergefunden."
+   }
+  ]
+ },
+ {
+  "docId": "b16_brauereibedarf_hartmann_re-7712",
+  "fileName": "b16_brauereibedarf_hartmann_re-7712.pdf",
+  "autoDecision": "hinschauen",
+  "documentType": "Rechnung",
+  "supplier": "Brauereibedarf Hartmann GmbH",
+  "supplierAddress": "Bamberg",
+  "supplierTaxId": "DE 155 019 883",
+  "iban": "DE89370400440532013000",
+  "invoiceNumber": "RE-7712",
+  "invoiceDate": "2026-06-13",
+  "orderReference": null,
+  "currency": "EUR",
+  "netAmount": 2231.4,
+  "vatRatePct": 19,
+  "vatAmount": 423.97,
+  "grossAmount": 2655.37,
+  "skonto": "14 Tage 2% Skonto, 30 Tage netto",
+  "manipulationAttempt": null,
+  "lineItems": [
+   {
+    "description": "Schlauchschelle W4 Edelstahl VE100",
+    "quantity": 12,
+    "unitPrice": 18.4,
+    "lineTotal": 220.8
+   },
+   {
+    "description": "Lebensmittelschlauch DN25, Meter",
+    "quantity": 60,
+    "unitPrice": 7.9,
+    "lineTotal": 474.0
+   },
+   {
+    "description": "Dichtring EPDM DN50 VE25",
+    "quantity": 8,
+    "unitPrice": 14.25,
+    "lineTotal": 114.0
+   },
+   {
+    "description": "Kugelhahn Edelstahl DN25",
+    "quantity": 6,
+    "unitPrice": 38.6,
+    "lineTotal": 231.6
+   },
+   {
+    "description": "Manometer 0-6 bar, Glyzerin",
+    "quantity": 4,
+    "unitPrice": 29.9,
+    "lineTotal": 119.6
+   },
+   {
+    "description": "Reinigungsbürste Tank, lang",
+    "quantity": 10,
+    "unitPrice": 12.3,
+    "lineTotal": 123.0
+   },
+   {
+    "description": "Filtermatte 60x60, VE5",
+    "quantity": 5,
+    "unitPrice": 41.0,
+    "lineTotal": 205.0
+   },
+   {
+    "description": "Handschuhe Nitril Gr.L, Box",
+    "quantity": 20,
+    "unitPrice": 8.75,
+    "lineTotal": 175.0
+   },
+   {
+    "description": "Sicherheitsbrille klar",
+    "quantity": 15,
+    "unitPrice": 6.4,
+    "lineTotal": 96.0
+   },
+   {
+    "description": "PTFE-Dichtband Rolle",
+    "quantity": 24,
+    "unitPrice": 2.15,
+    "lineTotal": 51.6
+   },
+   {
+    "description": "Schmierfett lebensmittelecht 1kg",
+    "quantity": 6,
+    "unitPrice": 22.5,
+    "lineTotal": 135.0
+   },
+   {
+    "description": "Kabelbinder 300mm VE100",
+    "quantity": 8,
+    "unitPrice": 4.8,
+    "lineTotal": 38.4
+   },
+   {
+    "description": "Warnschild Reinigung läuft",
+    "quantity": 10,
+    "unitPrice": 5.9,
+    "lineTotal": 59.0
+   },
+   {
+    "description": "Eimer Kunststoff 12l",
+    "quantity": 12,
+    "unitPrice": 6.2,
+    "lineTotal": 74.4
+   },
+   {
+    "description": "Wischtücher Rolle VE6",
+    "quantity": 10,
+    "unitPrice": 11.4,
+    "lineTotal": 114.0
+   }
+  ],
+  "blockingReasons": [
+   {
+    "id": "D1",
+    "message": "Keine Bestellnummer im Beleg - ohne Bestellbezug kann nicht geprüft werden, ob Ware/Leistung je bestellt wurde."
+   }
+  ],
+  "infoNotes": [
+   {
+    "id": "A1",
+    "message": "Datei konnte geöffnet und gelesen werden."
+   },
+   {
+    "id": "A2",
+    "message": "Kernfelder (Beträge, Lieferant, Rechnungsnummer) wurden lesbar extrahiert."
+   },
+   {
+    "id": "A3",
+    "message": "Belegtyp: Rechnung."
+   },
+   {
+    "id": "A4",
+    "message": "Seitenzahl stimmt (1/1)."
+   },
+   {
+    "id": "A5",
+    "message": "Alle geprüften Beträge/Mengen (27) im Rohtext wiedergefunden."
+   },
+   {
+    "id": "B1",
+    "message": "Rechnungsempfänger korrekt: Quellberg GmbH, Limonadenweg 3, 94032 Passau."
+   },
+   {
+    "id": "B2",
+    "message": "Lieferant vollständig angegeben: Brauereibedarf Hartmann GmbH, Bamberg."
+   },
+   {
+    "id": "B3",
+    "message": "Steuernummer des Lieferanten vorhanden: DE 155 019 883."
+   },
+   {
+    "id": "B4",
+    "message": "Rechnungsnummer RE-7712, Datum 2026-06-13 plausibel."
+   },
+   {
+    "id": "B5",
+    "message": "Netto, USt-Satz, USt-Betrag und Brutto sind ausgewiesen."
+   },
+   {
+    "id": "B6",
+    "message": "Kein 0%-Fall, Prüfung entfällt."
+   },
+   {
+    "id": "B7",
+    "message": "Leistungsdatum wird aktuell nicht geprüft (bewusste Scope-Entscheidung, siehe README)."
+   },
+   {
+    "id": "C1",
+    "message": "Positions-Arithmetik korrekt (15 Position(en) geprüft, Toleranz 0.005 €/Einheit für gerundete Anzeigepreise)."
+   },
+   {
+    "id": "C2",
+    "message": "Summe der Positionen (2231.40 €) stimmt mit Nettobetrag (2231.40 €) überein."
+   },
+   {
+    "id": "C3",
+    "message": "USt-Satz 19% ist gültig."
+   },
+   {
+    "id": "C4",
+    "message": "USt-Betrag korrekt: 2231.40 € × 19% = 423.97 €."
+   },
+   {
+    "id": "C5",
+    "message": "Brutto korrekt: 2231.40 € + 423.97 € = 2655.37 €."
+   },
+   {
+    "id": "C6",
+    "message": "Währung EUR, Betrag positiv."
+   },
+   {
+    "id": "D2",
+    "message": "Keine Bestellnummer angegeben - Prüfung entfällt (siehe D1)."
+   },
+   {
+    "id": "E1",
+    "message": "Datei-Hash wurde noch nicht verarbeitet."
+   },
+   {
+    "id": "E2",
+    "message": "Keine Dopplung von Lieferant + Rechnungsnummer im Ledger."
+   },
+   {
+    "id": "E3",
+    "message": "Kein inhaltliches Duplikat im Ledger gefunden."
+   },
+   {
+    "id": "E4",
+    "message": "IBAN-Prüfsumme gültig: DE89370400440532013000."
+   },
+   {
+    "id": "E5",
+    "message": "Erste bekannte Rechnung dieses Lieferanten - keine Historie zum Abgleich."
+   },
+   {
+    "id": "E6",
+    "message": "Keine an ein Prüfsystem gerichtete Formulierung im Dokument gefunden."
+   },
+   {
+    "id": "F1",
+    "message": "Rechnungsbetrag 2655.37 € unterhalb der Freigabegrenze von 50000.00 €."
+   },
+   {
+    "id": "F2",
+    "message": "Skonto-Hinweis im Beleg: 14 Tage 2% Skonto, 30 Tage netto."
+   }
+  ]
+ }
+]

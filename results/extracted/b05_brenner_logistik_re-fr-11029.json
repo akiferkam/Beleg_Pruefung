@@ -4,6 +4,7 @@
   "unreadable_reason": null,
   "invoice_number": "FR-11029",
   "invoice_date": "2026-06-28",
+  "currency": "EUR",
   "supplier_name": "Brenner Logistik GmbH",
   "supplier_address": "Regensburg",
   "supplier_tax_id": "DE 177 330 914",
@@ -13,15 +14,6 @@
   "recipient_address": "Limonadenweg 3, 94032 Passau",
   "recipient_tax_id": null,
   "order_reference": null,
-  "currency": "EUR",
-  "net_amount": 1490.0,
-  "vat_amount": 283.1,
-  "vat_rate_pct": 19,
-  "gross_amount": 1773.1,
-  "skonto_terms": null,
-  "reverse_charge": false,
-  "reverse_charge_note_present": false,
-  "pages_stated_total": 1,
   "line_items": [
     {
       "position": 1,
@@ -45,6 +37,14 @@
       "line_total": 117.0
     }
   ],
+  "net_amount": 1490.0,
+  "vat_rate_pct": 19,
+  "vat_amount": 283.1,
+  "gross_amount": 1773.1,
+  "reverse_charge": false,
+  "reverse_charge_note_present": false,
+  "skonto_terms": null,
+  "pages_stated_total": 1,
   "manipulation_attempt": null,
   "non_invoice_statement": null,
   "extraction_notes": null
