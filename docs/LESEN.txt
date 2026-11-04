@@ -1,0 +1,9 @@
+DEUTSCHE PROJEKTDOKUMENTATION
+
+start.html: Offline-Leseansicht, per Doppelklick oeffnen.
+overview.md: Einstieg fuer Markdown-Editoren.
+index.html: Original-CodeWiki-Viewer; benoetigt HTTP und Internet fuer CDN-Bibliotheken.
+
+CodeWiki-Viewer starten: In diesem Ordner 'python -m http.server 8765 --bind 127.0.0.1' ausfuehren und http://127.0.0.1:8765/index.html oeffnen.
+
+Diese Dokumentation fuehrt keine Belegpruefung aus.

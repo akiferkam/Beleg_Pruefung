@@ -4,6 +4,10 @@ Ein Skill, der pro Beleg entscheidet: **freigeben** oder **hinschauen**, mit
 nachvollziehbarer Begründung. Läuft auf beliebigen Ordnern mit Belegen
 (PDF, JPG, PNG, TIFF, WEBP), auch auf Belegen, die er nie gesehen hat.
 
+Ausführlichere technische Doku (Architektur, API-Vertrag, Prüfkatalog,
+Troubleshooting) in [docs/overview.md](docs/overview.md) bzw. zum Durchklicken
+in `docs/start.html`.
+
 ## Installation (einmalig)
 
 ```

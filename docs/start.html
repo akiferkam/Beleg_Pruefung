@@ -1,0 +1,928 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beleg-Prüfer · Deutsche Dokumentation</title><style>
+:root{color-scheme:light;--ink:#1b3038;--muted:#5b7079;--line:#dce5e8;--accent:#136759}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f6f8f9;color:var(--ink);font:16px/1.7 "Segoe UI",Arial,sans-serif}aside{width:285px;position:fixed;inset:0 auto 0 0;background:#102e37;color:#fff;padding:32px 24px;overflow:auto}.brand{font-size:24px;font-weight:700;line-height:1.3}.badge{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8edbc5;margin:12px 0 26px}nav a{display:block;color:#d0e0e6;text-decoration:none;font-size:14px;line-height:1.4;padding:12px 0;border-bottom:1px solid #2c4850}nav a:hover{color:#8edbc5}.aside-note{font-size:12px;color:#9cb5be;margin-top:30px}main{max-width:1220px;margin-left:285px;padding:32px 48px}.top{font-size:13px;letter-spacing:1px;color:var(--muted);margin-bottom:24px}article{background:white;border:1px solid var(--line);border-radius:14px;padding:34px 42px;margin:0 0 28px;scroll-margin-top:24px;overflow-wrap:anywhere}h1{font-size:29px;line-height:1.25;margin:0 0 22px;letter-spacing:-.6px}h2{font-size:21px;margin:32px 0 12px;color:#164f45}a{color:var(--accent)}p{margin:12px 0}table{width:100%;border-collapse:collapse;font-size:14px;margin:20px 0;display:block;overflow-x:auto}th{text-align:left;background:#edf4f3;color:#164f45}th,td{border:1px solid var(--line);padding:9px 12px;vertical-align:top}code{font:13px/1.6 Consolas,monospace;background:#edf2f4;padding:2px 5px;border-radius:4px}pre{background:#142e38;color:#e4f4f4;padding:20px;border-radius:9px;overflow:auto;white-space:pre}pre code{background:transparent;padding:0;color:inherit}.diagram{overflow:auto;padding:10px 0}.diagram svg{width:100%;min-width:650px;display:block}li{margin:7px 0}footer{font-size:12px;color:var(--muted);padding:8px 0 25px}@media(max-width:900px){aside{position:relative;width:auto;padding:22px}nav{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.badge{margin-bottom:8px}.aside-note{margin:12px 0 0}main{margin:0;padding:20px}article{padding:25px 22px}h1{font-size:25px}}@media print{aside,.top{display:none}main{margin:0;padding:0;max-width:none}article{border:0;border-radius:0;padding:0;break-before:page}article:first-of-type{break-before:auto}pre{white-space:pre-wrap}table{display:table}body{background:white;font-size:11px}h1{font-size:24px}h2{font-size:17px}.diagram svg{min-width:0}a{color:inherit;text-decoration:none}}
+</style></head><body><aside><div class="brand">Beleg-Prüfer<br>Quellberg</div><div class="badge">Technische Dokumentation</div><nav><a href="#overview">Beleg-Prüfer: technische Dokumentation</a><a href="#betrieb">Installation und Betrieb</a><a href="#pipeline">Pipeline und Extraktion</a><a href="#pruefregeln">Prüfkatalog und automatische Entscheidung</a><a href="#ledger">Ledger, manuelle Entscheidungen und Berichte</a><a href="#api">HTTP-API</a><a href="#frontend">Web-Oberfläche und Zustand</a><a href="#evaluation">Evaluation, Wartung und Grenzen</a></nav><p class="aside-note">Deutsch · 05.11.2026<br>Offline lesbar · 8 Kapitel<br>Analyse mit CodeWiki 2.0</p></aside><main><div class="top">PROJEKT-WIKI / BELEG_PRUEFER_AKIF</div><article id="overview"><h1>Beleg-Prüfer: technische Dokumentation</h1>
+<p>Der Beleg-Prüfer analysiert Rechnungen für die Quellberg GmbH und liefert pro Dokument <code>freigeben</code> oder <code>hinschauen</code> mit nachvollziehbaren Prüfbefunden. Ein Sprachmodell extrahiert strukturierte Daten aus den Dokumentseiten. Die automatische Entscheidung entsteht anschließend ausschließlich durch Python-Regeln.</p>
+<p>Diese Dokumentation beschreibt den gelesenen Quellstand vom 5. November 2026. Es wurde keine neue Rechnungsverarbeitung ausgeführt. Aussagen über Prüfungen beschreiben die Implementierung, keine unabhängige Bestätigung steuerlicher Vollständigkeit.</p>
+<h2>KI, Agenten und Verantwortlichkeiten</h2>
+<p>Die Anwendung hat <strong>eine KI-Extraktionsstufe</strong>, aber keine Gruppe autonom zusammenarbeitender Prüfagenten. Claude Vision liest Belege und liefert strukturierte Rohdaten. Die Prüfbereiche A–F sind Python-Funktionen; die automatische Entscheidung berechnet <code>decide.py</code>. Ein optionaler Claude-Skill kann die CLI bedienen, ist aber kein zusätzliches Glied der fachlichen Prüfkette. CodeWiki dient ausschließlich der Erstellung dieser Dokumentation.</p>
+<div class="diagram"><svg role="img" aria-label="Ablaufdiagramm" viewBox="0 0 1000 1070" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow-6206869546436515288" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9" fill="#6b8797"/></marker></defs><path d="M166.66666666666666,76 C166.66666666666666,99 500.0,102 500.0,125" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,76 C500.0,99 500.0,102 500.0,125" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,181 C500.0,204 500.0,207 500.0,230" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,286 C500.0,309 250.0,312 250.0,335" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,286 C500.0,309 750.0,312 750.0,335" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M250.0,391 C250.0,414 500.0,417 500.0,440" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M750.0,391 C750.0,414 500.0,417 500.0,440" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M833.3333333333334,76 C833.3333333333334,99 500.0,417 500.0,440" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,496 C500.0,519 500.0,522 500.0,545" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,601 C500.0,624 250.0,627 250.0,650" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M250.0,706 C250.0,729 500.0,732 500.0,755" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,601 C500.0,624 750.0,627 750.0,650" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,811 C500.0,834 500.0,837 500.0,860" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M750.0,706 C750.0,729 500.0,942 500.0,965" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><path d="M500.0,916 C500.0,939 500.0,942 500.0,965" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-6206869546436515288)"/><rect x="17.666666666666657" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="166.66666666666666" y="49">Start: Web oder CLI</tspan></text><rect x="351.0" y="125" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="154">Python: Pipeline steuert Ablauf</tspan></text><rect x="351.0" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="49">Optional: Claude-Skill bedient CLI</tspan></text><rect x="351.0" y="230" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="259">Python: Beleg lesen und Hash bilden</tspan></text><rect x="101.0" y="335" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="250.0" y="364">Cache-Treffer: Rohdaten laden</tspan></text><rect x="601.0" y="335" width="298" height="56" rx="10" fill="#eaf0ff" stroke="#829bd6"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#294a8a"><tspan x="750.0" y="355">Kein Cache: Claude Vision liest</tspan><tspan x="750.0" y="373">Beleg</tspan></text><rect x="351.0" y="440" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="469">Python: Grounding und Regeln A bis F</tspan></text><rect x="684.3333333333334" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="833.3333333333334" y="49">Bestellungen und Ledger-Historie</tspan></text><rect x="351.0" y="545" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="574">Python: freigeben oder hinschauen</tspan></text><rect x="101.0" y="650" width="298" height="56" rx="10" fill="#fff5e4" stroke="#d7ae69"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#805818"><tspan x="250.0" y="679">Web: Mensch kann Original prüfen</tspan></text><rect x="351.0" y="755" width="298" height="56" rx="10" fill="#fff5e4" stroke="#d7ae69"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#805818"><tspan x="500.0" y="784">Optional: manuelle Entscheidung</tspan></text><rect x="601.0" y="650" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="750.0" y="679">CLI: direkt übernehmen</tspan></text><rect x="351.0" y="860" width="298" height="56" rx="10" fill="#fff5e4" stroke="#d7ae69"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#805818"><tspan x="500.0" y="889">Web: ausdrücklich übernehmen</tspan></text><rect x="351.0" y="965" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="994">Ledger und Ergebnisberichte</tspan></text></svg></div><p>Die Cache-Zweige sind Alternativen: Bei einem Treffer entfällt der neue Vision-Aufruf. Im Web kann die automatische Entscheidung auch ohne manuellen Override übernommen werden; die manuelle Stufe ist optional. „Übernehmen“ startet die Pipeline erneut, nutzt dabei gegebenenfalls den Cache und schreibt die Historie. Eine Web-Analyse allein schreibt keine Ledger-Einträge auf die Festplatte.</p>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Zuständigkeit</th>
+<th>Implementierung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orchestrierung</td>
+<td>Aufnahme, Extraktion, Prüfungen und Speicherung koordinieren</td>
+<td><code>scripts/pipeline.py</code></td>
+</tr>
+<tr>
+<td>KI-Extraktion</td>
+<td>Dokumentseiten in das JSON-Schema übertragen; keine Freigabe entscheiden</td>
+<td><code>scripts/extract.py</code></td>
+</tr>
+<tr>
+<td>Regelwerk</td>
+<td>Formale Angaben, Rechenwerte, Bestellungen und Auffälligkeiten prüfen</td>
+<td><code>scripts/checks/</code></td>
+</tr>
+<tr>
+<td>Automatische Entscheidung</td>
+<td>Aus blockierenden Befunden den Status berechnen</td>
+<td><code>scripts/decide.py</code></td>
+</tr>
+<tr>
+<td>Menschliche Prüfung</td>
+<td>Original ansehen, Entscheidung gegebenenfalls übersteuern, Übernahme auslösen</td>
+<td>Web-Oberfläche und <code>scripts/overrides.py</code></td>
+</tr>
+<tr>
+<td>Optionaler Bedienagent</td>
+<td>Die vorhandene CLI anhand der Skill-Anleitung aufrufen</td>
+<td><code>SKILL.md</code> und <code>scripts/run.py</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Einstieg</h2>
+<table>
+<thead>
+<tr>
+<th>Kapitel</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#betrieb">Installation und Betrieb</a></td>
+<td>Windows-Einrichtung, Demo, Live-Betrieb, CLI, Fehlerbehebung</td>
+</tr>
+<tr>
+<td><a href="#pipeline">Pipeline und Extraktion</a></td>
+<td>Dateiaufnahme, Vision-Aufruf, Cache, Reihenfolge</td>
+</tr>
+<tr>
+<td><a href="#pruefregeln">Prüfkatalog und Entscheidung</a></td>
+<td>A1–F2, Schwellenwerte, Grenzen der Umsetzung</td>
+</tr>
+<tr>
+<td><a href="#ledger">Ledger und Berichte</a></td>
+<td>Duplikate, Bestellmengen, manuelle Entscheidungen, Exporte</td>
+</tr>
+<tr>
+<td><a href="#api">HTTP-API</a></td>
+<td>Endpunkte, Datenvertrag, Schreibwirkungen</td>
+</tr>
+<tr>
+<td><a href="#frontend">Web-Oberfläche</a></td>
+<td>Seiten, Live-/Demo-Adapter, Browserzustand</td>
+</tr>
+<tr>
+<td><a href="#evaluation">Evaluation und Wartung</a></td>
+<td>vorhandene Auswertung, Erweiterungspunkte, bekannte Einschränkungen</td>
+</tr>
+</tbody>
+</table>
+<h2>Architektur</h2>
+<div class="diagram"><svg role="img" aria-label="Ablaufdiagramm" viewBox="0 0 1000 860" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow-3702202834837768093" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9" fill="#6b8797"/></marker></defs><path d="M125.0,76 C125.0,99 500.0,207 500.0,230" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M375.0,76 C375.0,99 500.0,102 500.0,125" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M500.0,181 C500.0,204 500.0,207 500.0,230" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M500.0,286 C500.0,309 500.0,312 500.0,335" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M500.0,391 C500.0,414 500.0,417 500.0,440" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M500.0,496 C500.0,519 500.0,522 500.0,545" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M625.0,76 C625.0,99 500.0,522 500.0,545" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M875.0,76 C875.0,99 500.0,522 500.0,545" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M500.0,601 C500.0,624 500.0,627 500.0,650" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M500.0,706 C500.0,729 250.0,732 250.0,755" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><path d="M500.0,706 C500.0,729 750.0,732 750.0,755" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3702202834837768093)"/><rect x="-24.0" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="125.0" y="49">CLI: scripts/run.py</tspan></text><rect x="351.0" y="230" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="259">Gemeinsame Pipeline</tspan></text><rect x="226.0" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="375.0" y="49">React-Oberfläche</tspan></text><rect x="351.0" y="125" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="154">Flask-API</tspan></text><rect x="351.0" y="335" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="364">Dokumentaufnahme</tspan></text><rect x="351.0" y="440" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="460">Extraktionscache oder Anthropic</tspan><tspan x="500.0" y="478">Vision</tspan></text><rect x="351.0" y="545" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="574">Prüfkatalog A bis F</tspan></text><rect x="476.0" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="625.0" y="49">Ledger-Historie</tspan></text><rect x="726.0" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="875.0" y="49">Bestellungen aus CSV</tspan></text><rect x="351.0" y="650" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="679">Regelbasierte Entscheidung</tspan></text><rect x="101.0" y="755" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="250.0" y="784">Vorschau</tspan></text><rect x="601.0" y="755" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="750.0" y="784">Bei Übernahme: Ledger und Berichte</tspan></text></svg></div><h2>Verzeichnisstruktur</h2>
+<table>
+<thead>
+<tr>
+<th>Pfad</th>
+<th>Aufgabe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scripts/run.py</code></td>
+<td>Kommandozeilen-Einstieg</td>
+</tr>
+<tr>
+<td><code>scripts/pipeline.py</code></td>
+<td>Gemeinsame Orchestrierung für CLI und API</td>
+</tr>
+<tr>
+<td><code>scripts/intake.py</code>, <code>extract.py</code>, <code>normalize.py</code></td>
+<td>Aufnahme, Extraktion, Textabgleich</td>
+</tr>
+<tr>
+<td><code>scripts/checks/</code>, <code>scripts/decide.py</code></td>
+<td>Befunde und automatische Entscheidung</td>
+</tr>
+<tr>
+<td><code>scripts/ledger.py</code>, <code>po.py</code>, <code>report.py</code>, <code>overrides.py</code></td>
+<td>Historie, Bestellungen, Export und Übersteuerung</td>
+</tr>
+<tr>
+<td><code>api/app.py</code></td>
+<td>Lokale JSON-API</td>
+</tr>
+<tr>
+<td><code>web/</code></td>
+<td>React-/TanStack-Oberfläche</td>
+</tr>
+<tr>
+<td><code>config.yaml</code></td>
+<td>Firmenangaben, Modell, Policies und Pfade</td>
+</tr>
+<tr>
+<td><code>belege/</code>, <code>ledger/</code>, <code>results/</code></td>
+<td>Eingaben, gespeicherte Historie und Ergebnisse</td>
+</tr>
+<tr>
+<td><code>eval/</code></td>
+<td>Vergleich mit Ground Truth und Generatoren für Testmaterial</td>
+</tr>
+</tbody>
+</table>
+<h2>Drei Bedienwege</h2>
+<ol>
+<li><strong>Web:</strong> Analysieren, Original prüfen, gegebenenfalls manuell entscheiden und anschließend ins Ledger übernehmen.</li>
+<li><strong>CLI:</strong> Einen Ordner vollständig verarbeiten und das Ergebnis unmittelbar ins Ledger schreiben.</li>
+<li><strong>Claude-Skill:</strong> Die vorhandene <code>SKILL.md</code> dient als Bedienbeschreibung für einen Agenten, der die CLI aufruft.</li>
+</ol>
+<p>Die Web-Vorschau lädt die persistente Historie frisch, verändert aber nur das Ledger im Arbeitsspeicher. Extraktions- und Vorschaubild-Caches können trotzdem auf die Festplatte geschrieben werden. Die Übernahme ist ein neuer Pipeline-Lauf; sie bestätigt kein unveränderliches Vorschauobjekt.</p>
+<h2>Zentrale Eigenschaften</h2>
+<ul>
+<li>Nicht bestandene <code>BLOCK</code>-Befunde führen zu <code>hinschauen</code>; alle übrigen Befunde bleiben zur Erläuterung sichtbar.</li>
+<li>Ein Dokument ohne Extraktion führt zu einem Lesbarkeitsbefund, statt eine Modellentscheidung zu übernehmen.</li>
+<li>Die Historie berücksichtigt auch vorherige Dokumente desselben Laufs.</li>
+<li>Manuelle Entscheidungen bleiben getrennt vom automatischen Ergebnis gespeichert.</li>
+<li>Eine Freigabe löst keine Bankzahlung und keinen Export in ein Buchhaltungssystem aus.</li>
+</ul>
+<h2>Quellen</h2>
+<p>Maßgeblich sind <code>README.md</code>, <code>scripts/pipeline.py</code>, <code>scripts/checks/__init__.py</code>, <code>scripts/decide.py</code>, <code>api/app.py</code> und <code>web/src/lib/beleg-store.tsx</code>. Die Kapitel nennen weitere Quelldateien und konkrete Funktionen.</p>
+</article><article id="betrieb"><h1>Installation und Betrieb</h1>
+<h2>Python-Umgebung unter Windows</h2>
+<p>Die folgenden Befehle gehören in PowerShell im Projektordner. Sie beschreiben die Einrichtung der Anwendung, nicht des Dokumentationswerkzeugs.</p>
+<pre><code class="language-powershell">cd &quot;C:\Users\akife\Desktop\beleg_pruefer_akif&quot;
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+</code></pre>
+<p><code>requirements.txt</code> enthält Anthropic, PyMuPDF, Pillow, PyYAML, python-dotenv, RapidFuzz, Flask und Flask-CORS. Eine konkrete Mindestversion von Python wird dort nicht festgelegt; der Code verwendet unter anderem moderne Union-Typen.</p>
+<p>Für neue Extraktionen wird <code>ANTHROPIC_API_KEY</code> benötigt. Die Anwendung lädt die <code>.env</code> im Projektstamm. Eine neue Datei lässt sich beispielsweise mit <code>notepad .env</code> anlegen; eine vorhandene Datei vorher prüfen und erhalten.</p>
+<pre><code class="language-dotenv">ANTHROPIC_API_KEY=HIER_DEN_EIGENEN_SCHLUESSEL_EINTRAGEN
+</code></pre>
+<p>Der Modellname stammt aus <code>config.yaml</code> unter <code>model.name</code>; im untersuchten Stand ist dort <code>claude-sonnet-5</code> eingetragen. Ob dieser Bezeichner für das verwendete Konto verfügbar ist, wurde nicht durch einen API-Aufruf geprüft. Modellzugang und API-Schlüssel sind Voraussetzung für eine erfolgreiche neue Extraktion.</p>
+<h2>Web-Oberfläche im Live-Modus</h2>
+<p>In einem ersten Terminal im Projektstamm:</p>
+<pre><code class="language-powershell">.\.venv\Scripts\python.exe api\app.py
+</code></pre>
+<p>Die API bindet an <code>http://127.0.0.1:5050</code>. In einem zweiten Terminal:</p>
+<pre><code class="language-powershell">cd &quot;C:\Users\akife\Desktop\beleg_pruefer_akif\web&quot;
+npm install --legacy-peer-deps
+$env:VITE_BELEG_API_URL = &quot;http://127.0.0.1:5050&quot;
+npm run dev
+</code></pre>
+<p>Die Projektanleitung nennt <code>http://localhost:8080</code> für die Oberfläche; maßgeblich ist die tatsächlich von Vite ausgegebene Adresse. Die Umgebungsvariable gilt für den gestarteten Prozess und wird beim Build beziehungsweise Start von Vite eingelesen. Alternativ kann sie in <code>web/.env</code> hinterlegt werden.</p>
+<p>Die Oberfläche startet beim Laden eine Analyse. Neue, noch nicht gecachte Dokumente können dabei bereits Vision-Aufrufe auslösen. „Analysieren“ schreibt keine Ledger-Historie, kann aber Extraktionscaches erzeugen.</p>
+<h2>Demo ohne Backend</h2>
+<p>Ohne gesetztes <code>VITE_BELEG_API_URL</code> wählt <code>web/src/lib/api/index.ts</code> den Mock-Adapter. Für eine aktuelle PowerShell-Sitzung:</p>
+<pre><code class="language-powershell">Remove-Item Env:VITE_BELEG_API_URL -ErrorAction SilentlyContinue
+npm run dev
+</code></pre>
+<p>Auch in <code>web/.env</code> und anderen Vite-Umgebungsdateien darf dann kein Wert gesetzt sein. Der Demo-Modus verwendet gespeicherte Beispieldaten und bildet keinen echten neuen Extraktionslauf ab.</p>
+<h2>CLI</h2>
+<pre><code class="language-powershell">cd &quot;C:\Users\akife\Desktop\beleg_pruefer_akif&quot;
+.\.venv\Scripts\python.exe scripts\run.py belege\
+</code></pre>
+<p>Dieser Aufruf schreibt direkt ins konfigurierte Ledger. Es existiert in <code>run.py</code> kein Vorschau-Schalter.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>folder</code></td>
+<td>Zu verarbeitender Ordner, ohne rekursive Unterordnersuche</td>
+</tr>
+<tr>
+<td><code>--orders</code></td>
+<td>Expliziter Pfad zur Bestell-CSV</td>
+</tr>
+<tr>
+<td><code>--config</code></td>
+<td>Alternative YAML-Konfiguration</td>
+</tr>
+<tr>
+<td><code>--out</code></td>
+<td>Verzeichnis für CSV, Markdown und Extraktionskopien</td>
+</tr>
+<tr>
+<td><code>--ledger</code></td>
+<td>Alternative Historie, etwa für isolierte Testläufe</td>
+</tr>
+<tr>
+<td><code>--no-cache</code></td>
+<td>Vorhandenen Extraktionscache umgehen und Ergebnisse dort nicht speichern</td>
+</tr>
+</tbody>
+</table>
+<p>Beispiel für einen vom produktiven Ledger getrennten Lauf:</p>
+<pre><code class="language-powershell">.\.venv\Scripts\python.exe scripts\run.py belege\ --ledger &quot;demo-output\ledger.json&quot; --out &quot;demo-output\results&quot;
+</code></pre>
+<p>Ein bereits vorhandenes Demo-Ledger wird auch dabei wieder geladen. Die Bestell-CSV wird in dieser Reihenfolge gesucht: <code>--orders</code>, <code>bestellungen.csv</code> im Eingabeordner, konfigurierter Standardpfad relativ zum Projektstamm.</p>
+<h2>Typische Fehler</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Zu prüfende Ursache</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oberfläche zeigt weiter Beispieldaten</td>
+<td><code>VITE_BELEG_API_URL</code> fehlt; Vite nach Änderung neu starten</td>
+</tr>
+<tr>
+<td>Netzwerkfehler im Browser</td>
+<td>API läuft nicht oder Adresse/Port stimmt nicht</td>
+</tr>
+<tr>
+<td>A2: Extraktion fehlgeschlagen</td>
+<td>API-Schlüssel, Modellzugang oder Netzwerkfehler</td>
+</tr>
+<tr>
+<td>A1: Datei nicht lesbar</td>
+<td>Dateiformat, beschädigte Datei oder PDF-Passwort</td>
+</tr>
+<tr>
+<td>Viele Duplikatbefunde nach erneutem Lauf</td>
+<td>Dokumente stehen bereits im Ledger</td>
+</tr>
+<tr>
+<td>Geändertes Modell liefert alte Extraktion</td>
+<td>Cache ist nur nach Dateiinhalt adressiert; gegebenenfalls <code>--no-cache</code> verwenden</td>
+</tr>
+<tr>
+<td>Ergebnis ändert sich nach Neuladen</td>
+<td>Browser-Policy, Ledger-Historie oder initial ausgewählter Ordner</td>
+</tr>
+</tbody>
+</table>
+<h2>Quellen</h2>
+<p><code>requirements.txt</code>, <code>config.yaml</code>, <code>scripts/run.py::main</code>, <code>scripts/run.py::resolve_orders_csv</code>, <code>api/app.py</code>, <code>web/README.md</code>, <code>web/package.json</code>, <code>web/src/lib/api/index.ts</code>.</p>
+<p><a href="#overview">Zur Übersicht</a></p>
+</article><article id="pipeline"><h1>Pipeline und Extraktion</h1>
+<p><code>scripts/pipeline.py::process_folder</code> ist der gemeinsame Verarbeitungskern. CLI und API unterscheiden sich vor allem bei Eingabeparametern, Speicherung und Präsentation.</p>
+<h2>Ablauf</h2>
+<ol>
+<li>Modellkonfiguration, Bestellungen und persistentes Ledger laden.</li>
+<li>Mit <code>find_belege</code> direkte Dateien des Ordners alphabetisch sammeln; CSV-Dateien ausnehmen.</li>
+<li>Jede Datei über <code>intake.load_document</code> öffnen und ihren SHA-256-Hash berechnen.</li>
+<li>Für lesbare Dateien eine gecachte Extraktion laden oder Vision aufrufen.</li>
+<li>Die Datensätze nach extrahiertem Rechnungsdatum sortieren; Dokumente ohne Datum folgen danach. <code>doc_id</code> dient als weiteres Sortierkriterium.</li>
+<li>Extraktionswerte gegen die vorhandene Textschicht abgleichen, Prüfungen ausführen und Entscheidung bilden.</li>
+<li>Für jede vorhandene Extraktion einen Ledger-Eintrag im Arbeitsspeicher ergänzen, auch bei <code>hinschauen</code>.</li>
+<li>Das Ledger nur bei <code>commit_to_ledger=True</code> speichern.</li>
+</ol>
+<p>Die Reihenfolge beeinflusst Mengen- und Duplikatprüfungen. Ein späteres Dokument sieht bereits die zuvor im selben Lauf erfassten Einträge.</p>
+<h2>Interne Datenmodelle</h2>
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Wichtige Felder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PageContent</code></td>
+<td>PNG-Seitenbild und vorhandener digitaler Text</td>
+</tr>
+<tr>
+<td><code>IntakeResult</code></td>
+<td><code>doc_id</code>, Dateipfad, Typ, Seiten, Lesbarkeit, Fehler</td>
+</tr>
+<tr>
+<td><code>ProcessedDoc</code></td>
+<td>Aufnahme, Hash, Extraktion, Fehler, Befunde, Entscheidung und Zusatzkontext</td>
+</tr>
+<tr>
+<td><code>GroundingReport</code></td>
+<td>Übersprungen-Status, geprüfte und nicht wiedergefundene Felder</td>
+</tr>
+</tbody>
+</table>
+<p><code>doc_id</code> ist der Dateiname ohne Endung. Gleiche Dateistämme in verschiedenen Ordnern oder Dateiformaten erhalten dadurch dieselbe ID.</p>
+<h2>Dateiaufnahme</h2>
+<p>PDFs werden mit PyMuPDF geöffnet und mit 200 DPI gerendert. Pillow reduziert die längste Bildkante bei Bedarf auf 1.600 Pixel. Eine vorhandene Textschicht wird separat extrahiert. Passwortgeschützte PDFs werden zunächst mit leerem Passwort versucht; andernfalls entsteht ein Lesefehler.</p>
+<p>Die Bild-Endungsliste enthält JPG/JPEG, PNG, TIF/TIFF, WEBP und HEIC. Die tatsächliche Dekodierung hängt von Pillow und verfügbaren Formaten ab. Bei Bildern wird nur das geladene Bild in eine Seite überführt; mehrere TIFF-Frames werden nicht durchlaufen. Eine OCR-Textschicht erzeugt diese Stufe nicht.</p>
+<p>Nicht unterstützte direkte Dateien werden ebenfalls aufgenommen und führen zu einem A1-Befund. Unterordner werden nicht durchsucht. Ein nicht behandelter Fehler beim Datei-Hash oder beim Laden einer beschädigten Cache-Datei kann dagegen den gesamten Lauf abbrechen.</p>
+<h2>Vision-Extraktion</h2>
+<p><code>extract.py</code> sendet Seitenbilder als Base64-PNGs und ergänzend den digitalen Text an <code>Anthropic.messages.create</code>. Ein erzwungener Tool-Aufruf <code>submit_beleg_extraction</code> liefert die Rohdaten.</p>
+<p>Das Schema enthält unter anderem Belegtyp, Lieferant, Empfänger, Rechnungsnummer und -datum, Bestellreferenz, Positionen, Netto/USt/Brutto, Bankverbindung, Reverse-Charge-Signale und <code>manipulation_attempt</code>. Nicht sicher lesbare Werte sollen <code>null</code> sein.</p>
+<p>Der Systemprompt behandelt Dokumenttext als Daten und fordert bei anweisungsartigen Texten ein Zitat im Manipulationsfeld. Der Python-Code übernimmt daraus keine direkte Freigabe. <code>extract_document_safe</code> fängt Ausnahmen des Extraktionsaufrufs ab und liefert einen Fehlertext für A2. Eine separate umfassende lokale Schema-Validierung des zurückgegebenen <code>block.input</code> findet in dieser Funktion nicht statt.</p>
+<h2>Cache</h2>
+<p>Der Cache liegt normalerweise unter <code>.cache/extracted/&lt;sha256&gt;.json</code>. Eine Regeländerung kann deshalb dieselben Rohdaten ohne erneuten Modellaufruf auswerten. Der Schlüssel berücksichtigt ausschließlich den Dateiinhalt, nicht Modell, Prompt, Schema oder Konfiguration.</p>
+<p>CLI <code>--no-cache</code> setzt das Cache-Verzeichnis für diesen Lauf auf <code>None</code>. Der Web-Endpunkt bietet keinen entsprechenden Schalter. <code>results/extracted/&lt;doc_id&gt;.json</code> sind dagegen Ergebnis-Kopien und werden nicht als Hash-Cache gelesen.</p>
+<h2>Grounding</h2>
+<p><code>normalize.check_grounding</code> sucht mehrere deutsche und englische Zahlendarstellungen im normalisierten Text. Geprüft werden Netto-, Steuer- und Bruttobetrag sowie Positionsmengen und Positionssummen. Einstellige ganze Zahlen mit Betrag kleiner 10 werden als zu unspezifisch ausgelassen.</p>
+<p>Fehlt digitaler Text, wird die Prüfung als übersprungen behandelt. Sie ist ein textueller Plausibilitätsabgleich; sie weist einem Betrag keine bestimmte semantische Stelle im Dokument zu. Obwohl <code>config.yaml</code> ein Feld <code>grounding_enabled</code> enthält, fragt der untersuchte Pipeline-Aufruf dieses Feld nicht ab.</p>
+<h2>Quellen</h2>
+<p><code>scripts/pipeline.py</code>, <code>scripts/intake.py</code>, <code>scripts/extract.py</code>, <code>scripts/normalize.py</code>.</p>
+<p><a href="#overview">Zur Übersicht</a> · <a href="#pruefregeln">Prüfkatalog</a></p>
+</article><article id="pruefregeln"><h1>Prüfkatalog und automatische Entscheidung</h1>
+<p><code>checks.run_all_checks</code> erstellt <code>Finding</code>-Objekte mit <code>check_id</code>, <code>level</code>, <code>passed</code>, <code>message</code> und <code>policy_tunable</code>. Ein Befund blockiert genau dann, wenn <code>level == &quot;BLOCK&quot;</code> und <code>passed == False</code> gilt. <code>decide.decide</code> setzt bei mindestens einem blockierenden Befund <code>hinschauen</code>, ansonsten <code>freigeben</code>.</p>
+<h2>Ausführungsreihenfolge</h2>
+<p>A1 und A2 werden zuerst geprüft. Schlägt einer fehl, endet die Prüfung dieses Dokuments. Danach folgen A3, A4 und A5. Ist das Dokument keine Rechnung, endet der weitere Katalog nach diesen Prüfungen. Fehler in A4 oder A5 verhindern dagegen nicht die anschließenden B–F-Prüfungen einer Rechnung.</p>
+<h2>A: Lesbarkeit und Format</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Implementiertes Verhalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>Datei konnte geöffnet und aufgenommen werden</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Extraktion vorhanden, kein Extraktionsfehler und kein Unlesbarkeitsflag</td>
+</tr>
+<tr>
+<td>A3</td>
+<td><code>document_type</code> ist exakt <code>Rechnung</code></td>
+</tr>
+<tr>
+<td>A4</td>
+<td>Behauptete Gesamtseitenzahl entspricht der gelieferten Seitenzahl; ohne Angabe entfällt der Vergleich</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>Geprüfte Zahlen sind in der digitalen Textschicht wiederzufinden; ohne Textschicht übersprungen</td>
+</tr>
+</tbody>
+</table>
+<h2>B: Formale Angaben</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Implementiertes Verhalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Erstes Wort des konfigurierten Firmennamens im Empfängernamen und konfigurierte Adressfragmente vorhanden</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Name und Adresse des Lieferanten vorhanden</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Lieferanten-Steuerkennung und ein bekannter Kennungstyp vorhanden</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Rechnungsnummer sowie ISO-Datum vorhanden; Datum nicht in der Zukunft</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Netto, USt-Satz, USt-Betrag und Brutto nicht <code>None</code></td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Bei 0 %: Reverse-Charge-Hinweis und Steuerkennungen von Empfänger und Lieferant vorhanden</td>
+</tr>
+<tr>
+<td>B7</td>
+<td>Leistungsdatum wird als Information ausdrücklich nicht geprüft</td>
+</tr>
+</tbody>
+</table>
+<p>B6 vergleicht die Empfängerkennung trotz übergebenem Konfigurationswert nicht mit der Firmen-USt-ID. Jeder 0%-Fall wird auf die genannten Reverse-Charge-Angaben geprüft; andere steuerliche Gründe für 0 % werden nicht gesondert modelliert. Die Dokumentation beschreibt diese Regeln, ohne daraus eine vollständige steuerrechtliche Prüfung abzuleiten.</p>
+<h2>C: Arithmetik</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Implementiertes Verhalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Je vollständiger Position: <code>abs(Menge * Einzelpreis - Positionssumme) &lt;= abs(Menge) * Toleranz</code></td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Summe vorhandener Positionssummen gegen Netto; bei unzureichenden Daten INFO</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>USt-Satz in der konfigurierten Liste; fehlender Satz wird bereits in B5 behandelt</td>
+</tr>
+<tr>
+<td>C4</td>
+<td><code>Netto * USt-Satz / 100</code> gegen USt-Betrag</td>
+</tr>
+<tr>
+<td>C5</td>
+<td><code>Netto + USt</code> gegen Brutto</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Eine angegebene Währung muss EUR sein; ein vorhandenes Brutto muss positiv sein</td>
+</tr>
+</tbody>
+</table>
+<p>C1 lässt Positionen mit fehlenden Operanden aus. C6 blockiert eine leere Währung nicht. Die Berechnungen verwenden Python-Fließkommazahlen und absolute Toleranzen.</p>
+<h2>D: Bestellabgleich</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Implementiertes Verhalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>Fehlende Bestellreferenz je nach Policy BLOCK oder INFO</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Angegebene Referenz muss in der CSV existieren; unbekannte Referenz bleibt unabhängig von D1 blockierend</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Lieferantenvergleich mit RapidFuzz <code>token_set_ratio</code>, Standardschwelle 70</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>Einzelpreise zugeordneter Positionen gegen Bestellpreis</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Bereits erfasste Menge plus aktuelle passende Menge darf Bestellmenge nicht überschreiten</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Wert zusätzlicher Positionen im Verhältnis zum Bestellwert</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Information über Rahmenbestellung</td>
+</tr>
+</tbody>
+</table>
+<p>D3–D7 werden nur bei gefundener Bestellung ausgeführt. Positionen zählen ab einem fest im Code definierten Fuzzy-Score von 40 als passend. Ein Bestell-Einzelpreis von 0 kennzeichnet einen Rahmenvertrag; D4 und D5 entfallen dann. Zusatzpositionen bei einem Referenzwert kleiner oder gleich 0 bleiben manuell zu prüfen. Gleiche Rechnungsnummern werden bei der historischen Mengenberechnung ausgeschlossen.</p>
+<h2>E: Duplikate und Auffälligkeiten</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Implementiertes Verhalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Identischer Datei-Hash bereits im Ledger</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Gleicher normalisierter Lieferantenname und gleiche Rechnungsnummer</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Gleicher Positionsfingerabdruck und kompatibler Bruttobetrag unter anderer Rechnungsnummer</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>Vorhandene IBAN hat eine gültige Modulo-97-Prüfsumme</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Vorhandene IBAN stimmt mit einer bekannten IBAN des Lieferanten überein</td>
+</tr>
+<tr>
+<td>E6</td>
+<td>Extrahiertes Manipulationszitat führt zu einem blockierenden Befund</td>
+</tr>
+</tbody>
+</table>
+<p>Fehlende IBAN oder fehlende Bankhistorie werden als INFO behandelt. E3 filtert nicht zusätzlich auf Lieferant oder Bestellnummer. E6 hängt davon ab, ob die Extraktion einen Versuch erfasst.</p>
+<h2>F: Geschäftsregeln</h2>
+<p>F1 blockiert, wenn das Brutto <strong>größer</strong> als die Freigabegrenze ist; Gleichheit blockiert hier nicht. F2 zeigt vorhandene Skontobedingungen nur als Information an.</p>
+<h2>Standardwerte aus <code>config.yaml</code></h2>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th style="text-align:right">Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zusatzpositionen</td>
+<td style="text-align:right">10 % des Bestellwerts</td>
+</tr>
+<tr>
+<td>Bestellbezug erforderlich</td>
+<td style="text-align:right"><code>true</code></td>
+</tr>
+<tr>
+<td>Obligatorische Prüfung oberhalb</td>
+<td style="text-align:right">50.000 € brutto</td>
+</tr>
+<tr>
+<td>Positionsarithmetik je Einheit</td>
+<td style="text-align:right">0,005 €</td>
+</tr>
+<tr>
+<td>Nettosumme</td>
+<td style="text-align:right">0,05 €</td>
+</tr>
+<tr>
+<td>USt-Betrag / Bruttobetrag</td>
+<td style="text-align:right">jeweils 0,02 €</td>
+</tr>
+<tr>
+<td>USt-Sätze</td>
+<td style="text-align:right">0, 7, 19</td>
+</tr>
+<tr>
+<td>Lieferanten-Fuzzy-Score</td>
+<td style="text-align:right">70</td>
+</tr>
+</tbody>
+</table>
+<h2>Quellen</h2>
+<p><code>scripts/checks/base.py</code>, sämtliche Dateien in <code>scripts/checks/</code>, <code>scripts/decide.py</code>, <code>config.yaml</code>.</p>
+<p><a href="#overview">Zur Übersicht</a> · <a href="#ledger">Ledger und Berichte</a></p>
+</article><article id="ledger"><h1>Ledger, manuelle Entscheidungen und Berichte</h1>
+<h2>Historie</h2>
+<p><code>scripts/ledger.py::Ledger</code> lädt eine JSON-Liste von <code>LedgerEntry</code>-Datensätzen. Jeder Eintrag enthält Dokument-ID, Datei-Hash, Lieferant, Rechnungsnummer und -datum, Bestellreferenz, Beträge, Gesamtmenge, Positionsfingerabdruck, normalisierte IBAN, automatische Entscheidung und UTC-Verarbeitungszeit.</p>
+<p>Eine fehlende Datei bedeutet eine leere Historie. Eine ungültige vorhandene JSON-Datei wird nicht automatisch repariert. <code>save</code> schreibt die gesamte Liste neu; Datenbanktransaktionen, Dateisperren und atomare Austauschdateien sind nicht implementiert.</p>
+<h2>Welche Dokumente werden erfasst?</h2>
+<p>Die Pipeline ergänzt für jede vorhandene Extraktion einen Eintrag, unabhängig von der Entscheidung. Damit können auch <code>hinschauen</code>-Belege und extrahierte Nicht-Rechnungen die spätere Historie beeinflussen. Es gibt an dieser Stelle keinen Filter „nur freigegebene Rechnungen“.</p>
+<p><code>record</code> hängt Einträge an, ohne vorherige Einträge zu ersetzen oder Duplikate abzuweisen. Ein wiederholter Commit kann dieselben Dokumente erneut hinzufügen. Die Prüfungen melden zwar Duplikate, verhindern das anschließende Anhängen aber nicht.</p>
+<p>Bei gefundener Bestellung verwendet <code>ledger_entry_for</code> nur die Mengen der zur Bestellung passenden Positionen. Ohne gefundene Bestellung werden alle extrahierten Positionsmengen summiert. Historische Mengen berücksichtigen alle Entscheidungen und schließen Einträge mit der aktuellen Rechnungsnummer aus.</p>
+<h2>Inhaltsfingerabdruck</h2>
+<p><code>line_items_fingerprint</code> normalisiert Positionsbeschreibungen durch Kleinschreibung und äußeres Trimmen, rundet Mengen und Einzelpreise auf vier sowie Positionssummen auf zwei Nachkommastellen, sortiert die Tupel und bildet einen SHA-256-Hash des JSON-Texts. Rechnungsnummer, Datum, Lieferant und Layout gehören nicht zum Fingerabdruck.</p>
+<p><code>find_content_duplicate</code> sucht denselben Fingerabdruck unter anderer Rechnungsnummer. Sind beide Bruttobeträge vorhanden, darf ihre Differenz höchstens 0,02 € betragen.</p>
+<h2>Vorschau und Übernahme</h2>
+<div class="diagram"><svg role="img" aria-label="Ablaufdiagramm" viewBox="0 0 1000 545" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow-3078437234587881812" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9" fill="#6b8797"/></marker></defs><path d="M500.0,76 C500.0,99 500.0,102 500.0,125" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3078437234587881812)"/><path d="M500.0,181 C500.0,204 500.0,207 500.0,230" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3078437234587881812)"/><path d="M500.0,286 C500.0,309 250.0,312 250.0,335" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3078437234587881812)"/><path d="M500.0,286 C500.0,309 750.0,312 750.0,335" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3078437234587881812)"/><path d="M750.0,391 C750.0,414 500.0,417 500.0,440" fill="none" stroke="#6b8797" stroke-width="2" marker-end="url(#arrow-3078437234587881812)"/><rect x="351.0" y="20" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="49">Historie laden</tspan></text><rect x="351.0" y="125" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="154">Pipeline ausführen</tspan></text><rect x="351.0" y="230" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="259">Einträge im Speicher ergänzen</tspan></text><rect x="101.0" y="335" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="250.0" y="364">Analyse: nicht speichern</tspan></text><rect x="601.0" y="335" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="750.0" y="364">Commit: gesamte Liste speichern</tspan></text><rect x="351.0" y="440" width="298" height="56" rx="10" fill="#eef6f4" stroke="#83b4a8"/><text text-anchor="middle" font-size="14" font-family="Segoe UI, sans-serif" fill="#164f45"><tspan x="500.0" y="460">Berichte und Extraktionskopien</tspan><tspan x="500.0" y="478">schreiben</tspan></text></svg></div><p>Jeder Aufruf lädt die Historie erneut. In einer Vorschau sehen spätere Dokumente die vorherigen desselben Laufs, ohne dass diese Ergänzungen dauerhaft gespeichert werden. Ein Commit führt den Lauf erneut aus und kann bei inzwischen geänderter Historie andere Ergebnisse liefern.</p>
+<h2>Manuelle Entscheidungen</h2>
+<p><code>overrides.py</code> speichert unter <code>results/overrides.json</code> pro <code>doc_id</code> die Entscheidung, Notiz, ursprüngliche automatische Entscheidung und einen UTC-Zeitpunkt. Eine erneute Übersteuerung derselben ID ersetzt den bisherigen Override; eine unveränderliche Versionshistorie gibt es nicht.</p>
+<p>Die API zeigt <code>entscheidung</code> für das automatische Ergebnis und <code>endstatus</code> für das Ergebnis nach Override. Im Frontend gilt entsprechend <code>manual?.entscheidung ?? autoDecision</code>.</p>
+<p>Wichtig für die Interpretation: Beim Web-Commit wird das Ledger durch die Pipeline bereits mit der <strong>automatischen</strong> Entscheidung gespeichert. Anschließend überlagert die API die Berichtszeilen mit manuellen Entscheidungen. Der Ledger-Status und der CSV-Endstatus können deshalb voneinander abweichen. Die CLI liest Overrides nicht ein.</p>
+<h2>Ergebnisdateien</h2>
+<table>
+<thead>
+<tr>
+<th>Datei</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>results/ergebnis.csv</code></td>
+<td>Semikolon-getrennte Tabelle mit UTF-8-BOM</td>
+</tr>
+<tr>
+<td><code>results/ergebnis.md</code></td>
+<td>Zusammenfassung und Detailbefunde</td>
+</tr>
+<tr>
+<td><code>results/extracted/&lt;doc_id&gt;.json</code></td>
+<td>Kopie der Rohdaten einer erfolgreichen Extraktion</td>
+</tr>
+<tr>
+<td><code>results/overrides.json</code></td>
+<td>Persistente manuelle Übersteuerungen</td>
+</tr>
+<tr>
+<td><code>.cache/extracted/&lt;hash&gt;.json</code></td>
+<td>Wiederverwendbare Rohdaten nach Dateiinhalt</td>
+</tr>
+<tr>
+<td><code>.cache/thumbs/</code></td>
+<td>Vorschaubilder der Web-API</td>
+</tr>
+</tbody>
+</table>
+<p>Die CSV-Spalten sind <code>doc_id</code>, <code>datei</code>, <code>entscheidung</code>, <code>lieferant</code>, <code>rechnungsnr</code>, <code>betrag_brutto_eur</code>, <code>bestellnummer</code>, <code>gruende</code>, <code>info_notes</code>, <code>quelle</code>, <code>automatisch_war</code> und <code>manuelle_notiz</code>. Bei normalen CLI-Zeilen bleiben die Zusatzspalten für manuelle Herkunft leer.</p>
+<p>Bei gleicher Dokument-ID können Extraktionskopien und Overrides kollidieren. Berichte werden pro Lauf neu geschrieben; sie sind kein vollständiges Ereignisprotokoll aller bisherigen Läufe.</p>
+<h2>Quellen</h2>
+<p><code>scripts/ledger.py</code>, <code>scripts/pipeline.py::ledger_entry_for</code>, <code>scripts/pipeline.py::process_folder</code>, <code>scripts/overrides.py</code>, <code>scripts/report.py</code>, <code>api/app.py::_run</code>.</p>
+<p><a href="#overview">Zur Übersicht</a> · <a href="#api">HTTP-API</a></p>
+</article><article id="api"><h1>HTTP-API</h1>
+<p><code>api/app.py</code> stellt eine Flask-API bereit. Der direkte Programmeinstieg startet sie auf <code>127.0.0.1:5050</code>, mit <code>debug=False</code> und mehreren Request-Threads. Die HTML-Oberfläche gehört zum separaten <code>web/</code>-Projekt.</p>
+<h2>Endpunkte</h2>
+<table>
+<thead>
+<tr>
+<th>Methode und Pfad</th>
+<th>Eingabe</th>
+<th>Wirkung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /</code></td>
+<td>keine</td>
+<td>Service-Status als JSON</td>
+</tr>
+<tr>
+<td><code>POST /api/analyze</code></td>
+<td>JSON: <code>folder</code>, <code>policy</code>, beide optional</td>
+<td>Pipeline ohne persistente Ledger-Schreibung; Cache-Schreibung möglich</td>
+</tr>
+<tr>
+<td><code>POST /api/commit</code></td>
+<td>wie Analyze</td>
+<td>Pipeline mit Ledger-Schreibung, Berichten und Extraktionskopien</td>
+</tr>
+<tr>
+<td><code>POST /api/upload</code></td>
+<td>Multipart-Feld <code>files</code>, mehrfach</td>
+<td>Dateien in einen neuen Batch-Ordner schreiben</td>
+</tr>
+<tr>
+<td><code>POST /api/override</code></td>
+<td>JSON mit Dokument-ID und Entscheidung</td>
+<td>Manuellen Override sofort speichern</td>
+</tr>
+<tr>
+<td><code>GET /doc?path=...</code></td>
+<td>Dateipfad</td>
+<td>Originaldatei ausliefern</td>
+</tr>
+<tr>
+<td><code>GET /thumb?path=...</code></td>
+<td>Dateipfad</td>
+<td>PNG-Vorschaubild liefern beziehungsweise erzeugen</td>
+</tr>
+</tbody>
+</table>
+<h2>Analyse-Beispiel</h2>
+<pre><code class="language-json">{
+  &quot;folder&quot;: &quot;C:/Users/akife/Desktop/beleg_pruefer_akif/belege&quot;,
+  &quot;policy&quot;: {
+    &quot;extra_items_tolerance_pct&quot;: 10,
+    &quot;mandatory_review_amount_eur&quot;: 50000,
+    &quot;no_po_match_means_hinschauen&quot;: true,
+    &quot;line_arithmetic_tolerance_per_unit_eur&quot;: 0.005
+  }
+}
+</code></pre>
+<p>Ohne Ordner wird <code>belege/</code> im Projektstamm verwendet. Die Bestell-CSV wird zuerst im gewählten Eingabeordner gesucht, danach über den konfigurierten Projektpfad. Ein nicht vorhandener Ordner liefert HTTP 400.</p>
+<p><code>apply_overrides</code> erlaubt nur die vier oben genannten Policy-Felder. Die drei Zahlenwerte werden mit <code>float</code> konvertiert; der Bestellbezug mit <code>bool</code>. Clients müssen dafür echte JSON-Booleans senden: Ein String wie <code>&quot;false&quot;</code> wäre in Python wahr. Eine umfassende Wertebereichsvalidierung ist nicht vorhanden.</p>
+<p>Die Overrides gelten nur für diesen Lauf. Ein Endpunkt zum Speichern dieser Policy in <code>config.yaml</code> existiert im untersuchten Stand nicht.</p>
+<h2>Antwortformat</h2>
+<pre><code class="language-json">{
+  &quot;docs&quot;: [],
+  &quot;summary&quot;: {&quot;freigeben&quot;: 0, &quot;hinschauen&quot;: 0, &quot;gesamt&quot;: 0},
+  &quot;committed&quot;: false,
+  &quot;policy_used&quot;: {}
+}
+</code></pre>
+<p>Dies ist ein Formbeispiel mit leerer Dokumentliste. Tatsächliche Dokumentobjekte enthalten <code>doc_id</code>, <code>datei</code>, <code>pfad</code>, <code>entscheidung</code>, <code>endstatus</code>, <code>manuell</code>, Lieferanten- und Rechnungsfelder, Beträge, Positionen, <code>gruende</code>, <code>info_notes</code> und <code>fehler</code>. Befunde werden als <code>{ &quot;id&quot;: &quot;A1&quot;, &quot;nachricht&quot;: &quot;...&quot; }</code> übertragen. Die Liste wird nach Dokument-ID sortiert, unabhängig von der internen Prüfungsreihenfolge.</p>
+<p><code>summary</code> zählt die nach manuellen Overrides wirksamen Endstatus. <code>policy_used</code> enthält die tatsächlich verwendete Policy inklusive weiterer konfigurierter Werte.</p>
+<h2>Upload</h2>
+<p>Uploads werden unter <code>api/uploads/&lt;Zeitstempel&gt;-&lt;Zufall&gt;/</code> gespeichert. Der Server übernimmt den Basisdateinamen und gibt <code>folder</code> sowie <code>dateien</code> zurück. Der Client muss den zurückgegebenen Ordner für die folgende Analyse und den Commit verwenden.</p>
+<p>Ein Request ohne Dateien liefert HTTP 400. Die Upload-Funktion besitzt keine eigene Liste zulässiger Dateiendungen und keine konfigurierte Größenobergrenze. Die spätere Aufnahme bewertet nicht unterstützte Formate.</p>
+<h2>Manuelle Entscheidung</h2>
+<pre><code class="language-json">{
+  &quot;doc_id&quot;: &quot;beispielrechnung&quot;,
+  &quot;decision&quot;: &quot;freigeben&quot;,
+  &quot;note&quot;: &quot;Original geprüft&quot;,
+  &quot;original_decision&quot;: &quot;hinschauen&quot;
+}
+</code></pre>
+<p>Ohne Dokument-ID oder mit einer anderen Entscheidung als <code>freigeben</code>/<code>hinschauen</code> folgt HTTP 400. Der Server prüft hier nicht, ob die Dokument-ID tatsächlich Teil eines zuvor analysierten Laufs war.</p>
+<h2>Dateiabruf und Betriebsgrenzen</h2>
+<p><code>/doc</code> und <code>/thumb</code> erlauben PDF, JPG/JPEG, PNG, TIF/TIFF und WEBP. Eine fehlende Datei führt zu 404, eine andere Endung zu 403. Der Dateipfad wird auf Existenz und Endung geprüft, jedoch nicht auf Zugehörigkeit zu einem bestimmten Projektordner beschränkt.</p>
+<p>CORS ist für <code>/api/*</code> auf lokale HTTP-Ursprünge mit Port beschränkt. Authentifizierung und Nutzerrollen sind nicht implementiert. Die lokale Bindung gehört zum vorgesehenen Betriebsmodell. Da Ledger und Overrides ohne Sperren als JSON geschrieben werden, sind konkurrierende schreibende Requests nicht transaktional abgesichert.</p>
+<h2>Quellen</h2>
+<p><code>api/app.py</code>, <code>scripts/pipeline.py</code>, <code>scripts/overrides.py</code>, <code>scripts/thumbnails.py</code>, <code>web/src/lib/api/rest.ts</code>.</p>
+<p><a href="#overview">Zur Übersicht</a> · <a href="#frontend">Web-Oberfläche</a></p>
+</article><article id="frontend"><h1>Web-Oberfläche und Zustand</h1>
+<p>Die Oberfläche verwendet React 19, TanStack Router/Start, Vite, Tailwind und Radix-Komponenten. Anwendungsbezogene Komponenten liegen unter <code>web/src/components/beleg/</code>, allgemeine UI-Bausteine unter <code>web/src/components/ui/</code>.</p>
+<h2>Seiten</h2>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Aufgabe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>Dashboard mit Kennzahlen und Aktivitäten</td>
+</tr>
+<tr>
+<td><code>/pruefen</code></td>
+<td>Warteschlange offener Dokumente</td>
+</tr>
+<tr>
+<td><code>/belege/$docId</code></td>
+<td>Einzelbeleg mit Befunden, Positionen und Originalvorschau</td>
+</tr>
+<tr>
+<td><code>/freigegeben</code></td>
+<td>Ansicht entschiedener beziehungsweise freigegebener Dokumente</td>
+</tr>
+<tr>
+<td><code>/hochladen</code></td>
+<td>Datei-Upload und anschließende Analyse</td>
+</tr>
+<tr>
+<td><code>/pruefregeln</code></td>
+<td>Änderung der vier vom Client übergebenen Policy-Werte</td>
+</tr>
+</tbody>
+</table>
+<p>Die Routendateien befinden sich unter <code>web/src/routes/</code>. <code>routeTree.gen.ts</code> ist der generierte Routenbaum. Der Router und die Root-Route stellen das gemeinsame Layout und den Anwendungsprovider bereit.</p>
+<h2>API-Abstraktion</h2>
+<p><code>web/src/lib/api/types.ts</code> definiert <code>BelegApi</code>, <code>BelegResult</code>, <code>PolicyOverrides</code> und weitere gemeinsame Typen. <code>api/index.ts</code> wählt abhängig von <code>VITE_BELEG_API_URL</code> den REST- oder Mock-Adapter.</p>
+<p>Der REST-Adapter übersetzt deutsche/snake_case-Serverfelder in die Frontend-Struktur, etwa <code>doc_id</code> nach <code>docId</code>, <code>entscheidung</code> nach <code>autoDecision</code> und <code>gruende[].nachricht</code> nach <code>blockingReasons[].message</code>. Original- und Vorschau-URLs entstehen aus dem von der API gelieferten Dateipfad.</p>
+<p>Der Adapter setzt <code>currency</code> fest auf <code>EUR</code>, statt einen Serverwert zu übernehmen. Die UI-Währungsanzeige ist damit kein zusätzlicher Nachweis der tatsächlichen Belegwährung.</p>
+<h2>Zentraler Store</h2>
+<p><code>BelegProvider</code> in <code>web/src/lib/beleg-store.tsx</code> verwaltet den letzten Lauf, Dokumente, Ladezustand, Policy, aktuellen Eingabeordner, Änderungsstatus, letzten Commitzeitpunkt und Aktivitäten.</p>
+<table>
+<thead>
+<tr>
+<th>Aktion</th>
+<th>Ablauf</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>analyze</code></td>
+<td>API aufrufen, Ergebnis ersetzen, als unübernommene Vorschau markieren</td>
+</tr>
+<tr>
+<td><code>commit</code></td>
+<td>Pipeline-Commit anfordern, Ergebnis ersetzen, Zeit merken und Aktivität erzeugen</td>
+</tr>
+<tr>
+<td><code>decide</code></td>
+<td>Override serverseitig speichern und manuelle Entscheidung im lokalen Ergebnis ergänzen</td>
+</tr>
+<tr>
+<td><code>setPolicy</code></td>
+<td>Werte im Browser speichern und sofort erneut analysieren</td>
+</tr>
+<tr>
+<td><code>upload</code></td>
+<td>Dateien hochladen, Batch-Ordner merken und genau diesen Ordner analysieren</td>
+</tr>
+</tbody>
+</table>
+<p>API-Fehler werden als Toast-Nachricht angezeigt; <code>finally</code> setzt den Ladezustand zurück. <code>RunBar</code> zeigt Vorschau/Übernahmezustand und öffnet vor dem Commit einen Bestätigungsdialog.</p>
+<h2>Persistenz im Browser</h2>
+<table>
+<thead>
+<tr>
+<th>Local-Storage-Schlüssel</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beleg.policy.v1</code></td>
+<td>Vier UI-Policy-Werte</td>
+</tr>
+<tr>
+<td><code>beleg.folder.v1</code></td>
+<td>Letzter Eingabeordner</td>
+</tr>
+<tr>
+<td><code>beleg.activity.v1</code></td>
+<td>Bis zu 60 lokale Aktivitäten</td>
+</tr>
+<tr>
+<td><code>beleg.lastCommit.v1</code></td>
+<td>Letzter im Browser gemerkter Commitzeitpunkt</td>
+</tr>
+</tbody>
+</table>
+<p>Diese Werte sind browserbezogen. Sie ersetzen weder Backend-Konfiguration noch ein zentrales Auditprotokoll. Die vollständige Dokumentliste wird nach dem Laden neu angefragt.</p>
+<h2>Beobachtete Besonderheiten</h2>
+<ul>
+<li><code>defaultPolicy()</code> des REST-Adapters liefert die Mock-Standardwerte; es liest nicht die aktuelle <code>config.yaml</code> vom Server. Der Store initialisiert ebenfalls mit <code>DEFAULT_POLICY</code> beziehungsweise Local Storage und überträgt diese vier Werte an die API.</li>
+<li>Beim ersten Effekt wird zwar ein gespeicherter Ordner in den State geladen, <code>analyze(p)</code> verwendet aber noch den im ursprünglichen Callback erfassten Ordner. Der erste Lauf nach Neuladen kann deshalb den Backend-Standardordner analysieren. Spätere Aufrufe nutzen den aktualisierten State.</li>
+<li>Die manuelle Entscheidung wird bereits beim Klick serverseitig gespeichert. „Noch nicht im Ledger“ bedeutet daher nicht, dass keinerlei Datei verändert wurde.</li>
+<li>Der finale UI-Status wird mit <code>finalDecision</code> aus manueller oder automatischer Entscheidung berechnet. Die automatische Begründung bleibt dabei verfügbar.</li>
+</ul>
+<h2>Build und Entwicklung</h2>
+<pre><code class="language-powershell">npm run build
+npm run preview
+npm run lint
+</code></pre>
+<p>Die Befehle sind in <code>web/package.json</code> definiert. <code>npm run format</code> formatiert Dateien schreibend. Das Vite-Konfigurationspaket bringt bereits React-, TanStack-, Tailwind- und weitere Plugins mit; <code>vite.config.ts</code> warnt vor doppelter Registrierung.</p>
+<h2>Quellen</h2>
+<p><code>web/package.json</code>, <code>web/vite.config.ts</code>, <code>web/src/routes/</code>, <code>web/src/lib/beleg-store.tsx</code>, <code>web/src/lib/api/</code>, <code>web/src/components/beleg/run-bar.tsx</code>.</p>
+<p><a href="#overview">Zur Übersicht</a> · <a href="#evaluation">Evaluation und Wartung</a></p>
+</article><article id="evaluation"><h1>Evaluation, Wartung und Grenzen</h1>
+<h2>Vorhandene Auswertung</h2>
+<p><code>eval/eval.py</code> vergleicht eine Ergebnis-CSV mit einer Ground-Truth-CSV über <code>doc_id</code>. Beide Dateien werden mit Semikolon als Trennzeichen und UTF-8-BOM-Unterstützung gelesen.</p>
+<pre><code class="language-powershell">python eval\eval.py --ergebnis results\ergebnis.csv --ground-truth eval\ground_truth.csv
+</code></pre>
+<p>Die Ergebnisdatei benötigt <code>entscheidung</code>, die Ground Truth <code>erwartete_entscheidung</code>. Als positives Ereignis gilt <code>hinschauen</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Kennzahl</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TP</td>
+<td>Erwartet hinschauen, erhalten hinschauen</td>
+</tr>
+<tr>
+<td>TN</td>
+<td>Erwartet freigeben, erhalten freigeben</td>
+</tr>
+<tr>
+<td>FP</td>
+<td>Unnötige manuelle Prüfung</td>
+</tr>
+<tr>
+<td>FN</td>
+<td>Erwartet hinschauen, trotzdem freigegeben</td>
+</tr>
+</tbody>
+</table>
+<p>Der Bericht betont FN als gefährliche Fehlfreigabe. Fehlende IDs erzeugen eine Warnung und werden nicht in den Nenner der Accuracy aufgenommen. Doppelte IDs in einer CSV überschreiben sich im eingelesenen Dictionary. Der Evaluator setzt bei Fehlfreigaben keinen eigenen fehlschlagenden Prozess-Exitcode; seine Ausgabe muss daher für CI gezielt ausgewertet oder der Evaluator erweitert werden.</p>
+<p>Die Projekt-README nennt für die 16 mitgelieferten Testbelege 3 Freigaben und 13 Fälle zum Hinschauen. Dies ist ein dokumentiertes Beispielergebnis und keine bei der Erstellung dieser Wiki neu durchgeführte Vision-Auswertung.</p>
+<h2>Weitere Testwerkzeuge</h2>
+<p><code>eval/generate_synthetic_set.py</code> erzeugt synthetisches Testmaterial; <code>eval/generate_injection_demo.py</code> dient einem Manipulationsbeispiel. Die Generatoren gehören zum Test- und Demonstrationsbereich und sind kein Bestandteil des normalen Web-Requestpfads.</p>
+<h2>Eine neue Regel ergänzen</h2>
+<ol>
+<li>Regel im passenden Modul von <code>scripts/checks/</code> als Funktion mit <code>Finding</code>-Rückgabe implementieren.</li>
+<li>Eindeutige Prüf-ID, aussagekräftige Nachricht und bewusste Stufe <code>BLOCK</code> oder <code>INFO</code> wählen.</li>
+<li>Aufruf in <code>checks.run_all_checks</code> an einer zur Datenverfügbarkeit passenden Stelle einfügen.</li>
+<li>Falls nötig den Schwellenwert in <code>config.yaml</code> ergänzen und explizit übergeben.</li>
+<li>Grenzfälle und fehlende Eingabewerte anhand isolierter Datensätze überprüfen.</li>
+<li>Für eine neue UI-Policy zusätzlich API-Freigabeliste, TypeScript-Typen und Oberfläche anpassen.</li>
+</ol>
+<h2>Extraktion erweitern</h2>
+<p>Neue Felder gehören zunächst in <code>EXTRACTION_SCHEMA</code> und gegebenenfalls in den Prompt. Danach müssen nachgelagerte Prüfungen und API-/UI-Abbildungen angepasst werden. Bei einer Änderung am Schema muss der dateiinhaltsbasierte Cache berücksichtigt werden: Alter Dateiinhalt kann weiterhin alte Extraktionsdaten liefern.</p>
+<h2>Wichtige Grenzen des aktuellen Codes</h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Grenze</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Steuerliche Felder</td>
+<td>Leistungsdatum nicht extrahiert/geprüft; Reverse-Charge-Prüfung vereinfacht</td>
+</tr>
+<tr>
+<td>Datenqualität</td>
+<td>Nicht jedes fehlende Feld blockiert; einige Rechenprüfungen werden ausgelassen</td>
+</tr>
+<tr>
+<td>Grounding</td>
+<td>Textsuche ohne semantische Feldzuordnung; ohne Textschicht übersprungen</td>
+</tr>
+<tr>
+<td>Cache</td>
+<td>Modell-, Prompt- und Schemaversion nicht im Cache-Schlüssel</td>
+</tr>
+<tr>
+<td>Persistenz</td>
+<td>JSON-Dateien ohne Transaktionen und Sperren; wiederholtes Anhängen möglich</td>
+</tr>
+<tr>
+<td>Manuelle Entscheidung</td>
+<td>Override nach Dokument-ID, keine unveränderliche Änderungshistorie</td>
+</tr>
+<tr>
+<td>Mehrbenutzerbetrieb</td>
+<td>Keine Benutzerverwaltung; parallele Schreibzugriffe nicht abgesichert</td>
+</tr>
+<tr>
+<td>Datenvertrag</td>
+<td>Begrenzte Requestvalidierung; einige Frontend-Defaults stammen aus dem Mock-Adapter</td>
+</tr>
+</tbody>
+</table>
+<p>Die konkreten Auswirkungen sind in <a href="#pruefregeln">Prüfkatalog</a>, <a href="#ledger">Ledger</a>, <a href="#api">API</a> und <a href="#frontend">Frontend</a> erläutert. Diese Punkte beschreiben den untersuchten Stand; im Zuge dieser Dokumentation wurden keine Anwendungsfunktionen geändert.</p>
+<h2>Quellen</h2>
+<p><code>eval/eval.py</code>, <code>eval/generate_synthetic_set.py</code>, <code>eval/generate_injection_demo.py</code>, <code>README.md</code> sowie die in den Fachkapiteln genannten Quelldateien.</p>
+<p><a href="#overview">Zur Übersicht</a></p>
+</article><footer>Aus dem lokalen Quellcode dokumentiert. Die Anwendung und ihre Belegdaten wurden für diese Dokumentation nicht ausgeführt oder verändert.</footer></main></body></html>
